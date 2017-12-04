@@ -1,3 +1,3 @@
 # MyWords
 
-More detailed info to come.
+More details to come.
