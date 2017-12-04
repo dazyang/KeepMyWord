@@ -12,7 +12,6 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-      test counts
         <Route path="/" component={Header} />
         <Route path="/booklist" component={Booklist} />
         <Route path="/wordlist" component={HandleAdd} />
