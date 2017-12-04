@@ -1,3 +1,3 @@
-# KeepMyWords
+# MyWords
 
-A language learning tool. More detailed info to come.
+More detailed info to come.
