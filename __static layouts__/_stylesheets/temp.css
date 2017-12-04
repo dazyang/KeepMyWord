@@ -1,0 +1,59 @@
+/* .flashcard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 180px;
+    border: 0.5px solid black;
+}
+
+.flashcard:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 180px;
+    border: 0.5px solid black;
+}
+ */
+
+
+.textDisplay{
+    font-weight: 500;
+    /* padding-top: 65px; */
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 500px;
+    height: 450px;
+    border: 0.5px solid black;
+}
+
+.textDisplay:hover{
+    font-weight: 500;
+    /* padding-top: 65px; */
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 500px;
+    height: 450px;
+    border: 0.5px solid black;
+}
