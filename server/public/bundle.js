@@ -11717,8 +11717,6 @@ var _reactRouterDom = __webpack_require__(38);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Instead of this being a seperate page, when people clicked on 'Add new book', I want the form to appear on the same page where the buttons were (so buttons fades out, form fades in). The form should have two inputs "Book title" and "Authour", and a submit button. Once submitted, the book will be added into "My book list" and appear highlighted. User can click on the newly added book to go to create wordlist for that book.
-
 var Addbook = function Addbook(props) {
   return _react2.default.createElement(
     'div',
