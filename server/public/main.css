@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(82, 114, 136, 0.16);
+    background-color: rgba(10, 100, 151, 0.808);
     font-family: 'Roboto', sans-serif;
     /* text-align: center; */
     /* justify-content: center; */
@@ -27,15 +27,13 @@ img {
     flex-wrap: wrap;
     align-items: center; */
     background-color: rgb(235, 235, 235);
-    /* padding: 10px;
-    color: rgb(0, 75, 105);
-    margin: auto; */
+    padding: 10px;
+    margin: auto;
 
     /* align-content: center; */
     /* border: 1px solid black; */
     /* padding: 20px; */
-    /* flex-flow: row nowrap; (shorthand for flex-direction &flex-wrap */
-    /* width: 65%; */
+    width: 65%;
 }
 
 #app-title{
@@ -44,9 +42,11 @@ img {
     flex-wrap: wrap;
     align-items: center;
     /* align-content: center; */
-
+    
+    width: 65%;
     background-color: rgb(214, 222, 224);
     padding: 10px;
+    margin: auto;
     color: rgb(0, 75, 105);
     /* margin: auto; */
 
