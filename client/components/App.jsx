@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Route path="/" component={Header} />
+        <Header/>
         <Route path="/booklist" component={Booklist} />
         <Route path="/wordlist" component={HandleAdd} />
         <Link to='/'><button>Return</button></Link>

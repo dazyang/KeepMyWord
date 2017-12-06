@@ -11637,7 +11637,7 @@ var App = function App() {
     _react2.default.createElement(
       'div',
       { className: 'app' },
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Header2.default }),
+      _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/booklist', component: _Booklist2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlist', component: _HandleAdd2.default }),
       _react2.default.createElement(
