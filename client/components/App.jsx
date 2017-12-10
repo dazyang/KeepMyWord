@@ -15,7 +15,6 @@ const App = () => {
         <Header/>
         <Route path="/booklist" component={Booklist} />
         <Route path="/wordlist" component={HandleAdd} />
-        <Link to='/'><button>Return</button></Link>
       </div>
     </Router>
   )

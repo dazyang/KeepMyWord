@@ -12639,16 +12639,7 @@ var App = function App() {
       { className: 'app' },
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/booklist', component: _Booklist2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlist', component: _HandleAdd2.default }),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/' },
-        _react2.default.createElement(
-          'button',
-          null,
-          'Return'
-        )
-      )
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlist', component: _HandleAdd2.default })
     )
   );
 };
@@ -13051,7 +13042,11 @@ var Header = function Header() {
   return _react2.default.createElement(
     'div',
     { id: 'app-title' },
-    'Keep My (Words)',
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/' },
+      'Keep My (Words)'
+    ),
     _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/booklist' },
