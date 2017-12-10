@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const Header = () => {
   return (
       <div id='app-title'>
-        <Link to="/">Keep My (Words)</Link>
+        Keep My (Words)
         <Link to="/booklist"><button>Add Book</button></Link>
         <Link to="/booklist"><button>Browse Books</button></Link>
       </div>

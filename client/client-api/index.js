@@ -12,6 +12,11 @@ export function getDefinition(word, callback) {
     })
 }
 
+export function saveBook(book) {
+  return request.post('api/v1/booklist')
+  .send(book)
+}
+
 
 
 //==== Annah's example ===//
@@ -26,4 +31,18 @@ export function getDefinition(word, callback) {
 //       if (err) { console.log(err + 'error') }
 //       else { cb(JSON.parse(res.text)) }
 //     })
+// }
+
+
+// Example from Ping //
+
+// import request from 'superagent'
+
+// export function getPings() {
+//   return request.get('/api/v1/pings')
+// }
+
+// export function savePing(ping) {
+//   return request.post('/api/v1/pings')
+//     .send(ping)
 // }

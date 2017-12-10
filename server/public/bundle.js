@@ -12639,7 +12639,16 @@ var App = function App() {
       { className: 'app' },
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/booklist', component: _Booklist2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlist', component: _HandleAdd2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlist', component: _HandleAdd2.default }),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/' },
+        _react2.default.createElement(
+          'button',
+          null,
+          'Return'
+        )
+      )
     )
   );
 };
@@ -12659,7 +12668,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(40);
 
-exports.default = (0, _redux.combineReducers)({});
+var _addbook = __webpack_require__(289);
+
+var _addbook2 = _interopRequireDefault(_addbook);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _redux.combineReducers)({
+  addBook: addBook
+});
 
 /***/ }),
 /* 120 */
@@ -12720,6 +12737,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getDefinition = getDefinition;
+exports.saveBook = saveBook;
 
 var _superagent = __webpack_require__(280);
 
@@ -12738,6 +12756,10 @@ function getDefinition(word, callback) {
   });
 }
 
+function saveBook(book) {
+  return _superagent2.default.post('api/v1/booklist').send(book);
+}
+
 //==== Annah's example ===//
 
 // export function getRobot(text, cb) {
@@ -12750,6 +12772,20 @@ function getDefinition(word, callback) {
 //       if (err) { console.log(err + 'error') }
 //       else { cb(JSON.parse(res.text)) }
 //     })
+// }
+
+
+// Example from Ping //
+
+// import request from 'superagent'
+
+// export function getPings() {
+//   return request.get('/api/v1/pings')
+// }
+
+// export function savePing(ping) {
+//   return request.post('/api/v1/pings')
+//     .send(ping)
 // }
 
 /***/ }),
@@ -12809,6 +12845,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(120);
 
 var _Addbook = __webpack_require__(123);
 
@@ -12894,7 +12932,7 @@ var Booklist = function (_React$Component) {
   return Booklist;
 }(_react2.default.Component);
 
-exports.default = Booklist;
+exports.default = (0, _reactRedux.connect)()(Booklist);
 
 
 {/* <div className='container'>
@@ -13042,11 +13080,7 @@ var Header = function Header() {
   return _react2.default.createElement(
     'div',
     { id: 'app-title' },
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/' },
-      'Keep My (Words)'
-    ),
+    'Keep My (Words)',
     _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/booklist' },
@@ -31664,6 +31698,33 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _addBooks = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../actions/addBooks\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+function addBook() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _addBooks.ADD_BOOK:
+      return action.addBooks;
+    default:
+      return state;
+  }
+} // Reducer
+
+exports.default = addBook;
 
 /***/ })
 /******/ ]);
