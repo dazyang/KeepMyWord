@@ -11,7 +11,7 @@ This is a personal project I started during EDA Bootcamp. My goal is to create a
 **Second stage**  
 More to come
 
-## Links to assist me to achieve my goal :eyes:
+## Step by steps - resources to assist me achieving my goal :eyes:
 
 Knex && Testing
 https://github.com/miromiro-2017/knex-todo-cli
