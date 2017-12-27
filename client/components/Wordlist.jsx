@@ -2,11 +2,6 @@ import React from 'react'
 import FlipCard from 'react-flipcard'
 // import { getDefinition } from '../client-api'
 
-// The layout of this page should differ from the home page. I want the cards to take up majority of the page. When the user first landed on the page to create wordlist for the book, all there is on the page are the title of the book, input fields and a submit button. 
-
-// Stretch goals //
-// Toggle button: When the first card is created, I want a toggle button to appear on the right side of the page, so users can toggle between card-views or list-views. 
-
 class Wordlist extends React.Component {
   constructor (props) {
     super(props)

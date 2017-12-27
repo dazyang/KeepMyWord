@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Wordlist from './Wordlist'
-import { getDefinition } from '../client-api'
+// import { getDefinition } from '../client-api'
 
 class HandleAdd extends React.Component {
   constructor (props) {
@@ -16,15 +16,15 @@ class HandleAdd extends React.Component {
     this.updateWordDetails = this.updateWordDetails.bind(this)
   }
 
-  addToWordList (e) {
-    e.preventDefault()
-    getDefinition(this.state.userVocab, (def) => {
-      const apiData = def.results[0].definition
-      // console.log(apiData)
-      this.setState({definition: apiData})
-    })
-    this.handleAdd(this.state.userVocab)
-  }
+  // addToWordList (e) {
+  //   e.preventDefault()
+  //   getDefinition(this.state.userVocab, (def) => {
+  //     const apiData = def.results[0].definition
+  //     // console.log(apiData)
+  //     this.setState({definition: apiData})
+  //   })
+  //   this.handleAdd(this.state.userVocab)
+  // }
 
   handleAdd (word) {
     const {words} = this.state

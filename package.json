@@ -4,7 +4,7 @@
   "description": "A webpack React starter",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dazyang/KeepMyWords"
+    "url": "git+https://github.com/dazyang/MyWords"
   },
   "main": "server/index.js",
   "scripts": {

@@ -56,18 +56,3 @@ class Booklist extends React.Component {
 }
 
 export default connect()(Booklist)
-
-{ /* <div className='container'>
-  <div className='navTitles'>
-    New Book
-  </div>
-  <div className='user-options'>
-    <form onSubmit={this.addToBookList}>
-      <input name="bookTitle" type='text' onChange={this.updateBookLists} placeholder='What are you reading?' value={this.state.bookTitle} />
-      <br />
-      Add Author
-      <input type="submit" value="Add to my booklist" />
-    </form>
-  </div>
-    <Addbook books={this.state.books} />
-</div> */ }
