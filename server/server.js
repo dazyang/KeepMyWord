@@ -1,21 +1,17 @@
-const request = require('superagent')
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
-const booklists = require('./routes/booklistRoutes')
+const greetings = require('./routes/greeting')
 
 const server = express()
 
+server.use(cors('*'))
+
 server.use(bodyParser.json())
-server.use(express.static(path.join(__dirname, './public')))
+server.use(express.static(path.join(__dirname, '../public')))
 
-server.use('/api/v1/booklist', booklists)
-
-// server.use('/api/v1/definition/', (req,res) => {
-//   request
-//     .get(`https://wordsapiv1.p.mashape.com/words/`)
-// })
-
+server.use('/api/greetings', greetings)
 
 module.exports = server
