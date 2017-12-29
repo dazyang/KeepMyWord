@@ -1,9 +1,12 @@
-import bookData from '../../_DATA/books'
+// import bookData from '../../_DATA/books'
 
-const initialState = bookData.books
+// const initialState = bookData.books
+// const initialState = []
 
-const books = (state = initialState, action) => {
+const books = (state = [], action) => {
   switch (action.type) {
+    case 'RECEIVE_BOOKS':
+    return books
     default:
     return state
   }

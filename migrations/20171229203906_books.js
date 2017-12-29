@@ -3,6 +3,7 @@ exports.up = function (knex, Promise) {
     table.increments('id')
     table.string('book_title')
     table.string('author')
+    table.string('country')
   })
 }
 
