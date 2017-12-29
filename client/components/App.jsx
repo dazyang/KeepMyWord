@@ -6,9 +6,16 @@ import BookList from './BookList'
 import { Link } from 'react-router-dom'
 
 
-const App = () => {
-  return (
-    <Router>
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    // this.state = {
+    //   dataLists: [ ]
+    // }
+  }
+  render() {
+    return (
+      <Router>
       <div className='app'>
         <Header />
         <Route path="/booklist" component={BookList} />
@@ -18,5 +25,6 @@ const App = () => {
   )
 }
 
+}
 export default App
 
