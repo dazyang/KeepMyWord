@@ -1,13 +1,17 @@
 import React from 'react'
-// import data from '../../data/beers'
-import Beer from './Beer'
 
-const Savedbooks = (props) => {
+const SavedBooks = (props) => {
+  const book= props.book
+  
   return (
-    <div>
-      {/* {data.beers.map(beer => <Beer key={beer.id} navigate={props.navigate} beer={beer} />)} */}
+    <div className='container'>
+      <p className='name'>{book.title}</p>
+      <p className='description'>{book.author}</p>
+      <p>
+        <span className='country'>{book.country}</span>
+      </p>
     </div>
   )
 }
 
-export default BeerList
+export default SavedBooks
