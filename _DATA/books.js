@@ -3,18 +3,18 @@ module.exports = {
     {
       id: 1,
       title: 'The Remain of Days',
-      author: 'Hawkes Bay Independent Brewery',
+      author: 'Kazuo Ishiguro',
       country: 'England',
     }, {
       id: 2,
-      title: 'Mangose & Melons',
-      author: 'Baylands Brewery',
-      country: 'New Zealand'
+      title: 'A Fortunate Man',
+      author: 'John Berger & Jean Mohr',
+      country: 'England'
     }, {
       id: 3,
-      title: 'North End Pilsner',
-      author: 'North End Brewing',
-      country: 'New Zealand'
+      title: 'Do They Speak English Down There?',
+      author: 'Susan C Tunney',
+      country: 'America/New Zealand'
     }
   ]
 }

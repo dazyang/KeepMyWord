@@ -117,13 +117,32 @@ input{
 }
 
 .book-titles{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 5px;
+    margin-bottom: 5px;
     color: black;
-    font-size: 24px;
     font-weight: 400;
     text-align: left;
-    background-color: #F0CE5E; 
+    background-color: rgb(238, 222, 171); 
+}
+
+#author{
+    font-weight: bold;
+}
+
+#country{
+    width: 30px;
+    font-size: 12px;
+    font-style: italic;
+    color: gray;
+}
+
+#checkout-vocab{
+    border: 1px solid black;
+    padding: 3px;
+    font-size: 12px;
+    background-color: rgb(143, 219, 255);
+    float: right;
 }
 
 .holder{
