@@ -12588,6 +12588,10 @@ var _Header = __webpack_require__(121);
 
 var _Header2 = _interopRequireDefault(_Header);
 
+var _BookList = __webpack_require__(273);
+
+var _BookList2 = _interopRequireDefault(_BookList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -12598,6 +12602,7 @@ var App = function App() {
       'div',
       { className: 'app' },
       _react2.default.createElement(_Header2.default, null),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/booklist', component: _BookList2.default }),
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: '/' },
@@ -28896,6 +28901,75 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import { connect } from 'react-redux'
+
+
+var BookList = function (_React$Component) {
+  _inherits(BookList, _React$Component);
+
+  function BookList(props) {
+    _classCallCheck(this, BookList);
+
+    var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(BookList, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'I am currently reading',
+            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'Book title' }),
+            'by',
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author' })
+          ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Add to my booklist' })
+        )
+      );
+    }
+  }]);
+
+  return BookList;
+}(_react2.default.Component);
+
+exports.default = BookList;
+// export default connenct()(BookList)
 
 /***/ })
 /******/ ]);
