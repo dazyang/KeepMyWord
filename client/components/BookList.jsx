@@ -33,4 +33,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(BookList)
-// export default connenct()(BookList)
