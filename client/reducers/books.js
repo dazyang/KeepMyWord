@@ -6,7 +6,7 @@
 const books = (state = [], action) => {
   switch (action.type) {
     case 'RECEIVE_BOOKS':
-    return books
+    return action.books
     default:
     return state
   }

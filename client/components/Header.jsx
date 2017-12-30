@@ -5,8 +5,8 @@ const Header = () => {
   return (
       <div id='app-title'>
         Keep My (Words)
-        <Link to="/booklist"><button>Add Book</button></Link>
-        <Link to="/booklist"><button>Browse Books</button></Link>
+        <Link to="/booklists"><button>Add Book</button></Link>
+        <Link to="/booklists"><button>Browse Books</button></Link>
       </div>
   )
 }

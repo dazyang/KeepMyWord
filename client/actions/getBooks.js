@@ -10,7 +10,7 @@ export const receiveBooks = (books) => {
 export function getBooks () {
   return (dispatch) => {
     request
-      .get(`/api/books`)
+      .get('/api/v1/booklists')
       .end((err, res) => {
         if (err) {
           console.error(err.message)

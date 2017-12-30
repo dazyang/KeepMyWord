@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const bookDb = require('../db/bookDb')
+const booksDb = require('../db/booksDb')
 
 router.get('/', (req, res) => {
-  bookDb.getBooks()
-    .then(book => {
-      res.json(book)
+  // console.log('thiis is' + booksDb)
+  booksDb.getBooks()
+    .then(books => {
+      res.json(books)
     })
 })
 

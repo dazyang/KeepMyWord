@@ -11,7 +11,7 @@ const App = (props) => {
         <Router>
         <div className='app'>
           <Header />
-          <Route path="/booklist" component={BookList} />
+          <Route path="/booklists" component={BookList} />
           <Link to='/'><button>Return</button></Link>
         </div>
       </Router>

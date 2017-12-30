@@ -13,7 +13,7 @@ server.use(cors('*'))
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
-server.use('/api/greetings', greetings)
-server.use('/api/booklists', books)
+server.use('/api/v1/greetings', greetings)
+server.use('/api/v1/booklists', books)
 
 module.exports = server

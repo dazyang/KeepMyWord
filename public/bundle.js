@@ -12621,7 +12621,7 @@ var App = function App(props) {
       'div',
       { className: 'app' },
       _react2.default.createElement(_Header2.default, null),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/booklist', component: _BookList2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/booklists', component: _BookList2.default }),
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: '/' },
@@ -12787,7 +12787,7 @@ var Header = function Header() {
     'Keep My (Words)',
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/booklist' },
+      { to: '/booklists' },
       _react2.default.createElement(
         'button',
         null,
@@ -12796,7 +12796,7 @@ var Header = function Header() {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/booklist' },
+      { to: '/booklists' },
       _react2.default.createElement(
         'button',
         null,
@@ -12930,7 +12930,7 @@ var books = function books() {
 
   switch (action.type) {
     case 'RECEIVE_BOOKS':
-      return books;
+      return action.books;
     default:
       return state;
   }
