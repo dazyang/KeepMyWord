@@ -6,7 +6,7 @@ const Header = () => {
       <div id='app-title'>
         Keep My (Words)
         <Link to="/booklists"><button>Booklist</button></Link>
-        <Link to="/vocabularies"><button>Browse vocabulary</button></Link>
+        <Link to="/wordlists"><button>Browse vocabulary</button></Link>
       </div>
   )
 }

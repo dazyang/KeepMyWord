@@ -1,10 +1,10 @@
 import request from 'superagent'
 
-export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
+// export const RECEIVED_BOOKS = 'RECEIVED_BOOKS'
 
 export const receiveBooks = (books) => {
   return {
-    type: "RECEIVE_BOOKS",
+    type: "RECEIVED_BOOKS",
     books
   }
 }

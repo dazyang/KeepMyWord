@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { getBooks } from '../actions/getBooks.js'
 //problem was forgot to destructuring getBooks, that's why it didn't recognize the function
-import SavedBooks from './Savedbooks.jsx'
+import SavedBooks from './SavedBooks.jsx'
 
 class BookList extends React.Component {
     componentDidMount() {
