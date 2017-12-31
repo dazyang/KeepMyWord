@@ -7,7 +7,7 @@ const SavedBooks = (props) => {
   
   return (
     <div className='book-titles'>
-      <span>{book.title}</span>{' '}by{' '}
+      <span>{book.book_title}</span>{' '}by{' '}
       <span id='author'>{book.author}</span>{' '}
       <span id='country'>{book.country}</span>
       <Link to='/'><span id='checkout-vocab'>See Vocabulary</span></Link>

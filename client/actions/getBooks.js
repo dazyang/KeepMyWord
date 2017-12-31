@@ -1,5 +1,7 @@
 import request from 'superagent'
 
+export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
+
 export const receiveBooks = (books) => {
   return {
     type: "RECEIVE_BOOKS",

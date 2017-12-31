@@ -4,8 +4,8 @@ const router = express.Router()
 const booksDb = require('../db/booksDb')
 
 router.get('/', (req, res) => {
-  // console.log('thiis is' + booksDb)
-  booksDb.getBooks()
+  let db = req.app.get('db')
+  booksDb.getBooks(db)
     .then(books => {
       res.json(books)
     })

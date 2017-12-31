@@ -1,11 +1,11 @@
-// import bookData from '../../_DATA/books'
+import { RECEIVE_BOOKS } from '../actions/getBooks'
 
 // const initialState = bookData.books
 // const initialState = []
 
-const books = (state = [], action) => {
+function books (state = [], action) {
   switch (action.type) {
-    case 'RECEIVE_BOOKS':
+    case "RECEIVE_BOOKS":
     return action.books
     default:
     return state
