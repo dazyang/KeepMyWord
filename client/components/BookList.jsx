@@ -14,7 +14,7 @@ class BookList extends React.Component {
     return (
         <div className='container'>
           <form>
-            <label>Add a book: 
+            <label>Add a book{' '} 
             <input name="bookTitle" className="insert-title" type='text' placeholder='I am currently reading...' />
             by
             <input name="author" className="insert-name" type='text' placeholder='Author'  />

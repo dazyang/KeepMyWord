@@ -6,7 +6,9 @@ const SavedWords = (props) => {
   const word = props.words
   return (
     <div className='book-titles'>
-      {word.word}
+      <span>{word.word}</span>{' '}
+      <span id='country'>{word.book_id}</span>
+      
     </div>
   )
 }
