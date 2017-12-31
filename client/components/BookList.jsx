@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { getBooks } from '../actions/getBooks.js'
 //problem was forgot to destructuring getBooks, that's why it didn't recognize the function
-import SavedBooks from './Savedbooks.jsx'
+import SavedBooks from './SavedBooks.jsx'
 
 class BookList extends React.Component {
     componentDidMount() {
@@ -11,16 +11,15 @@ class BookList extends React.Component {
     }
   
   render() {
-    console.log(this.props.books)
     return (
         <div className='container'>
           <form>
-            <label>I am currently reading 
-            <input name="bookTitle" className="insert-title" type='text' placeholder='Book title' />
+            <label>Add a book: 
+            <input name="bookTitle" className="insert-title" type='text' placeholder='I am currently reading...' />
             by
             <input name="author" className="insert-name" type='text' placeholder='Author'  />
             </label>
-            <input type="submit" value="Add to my booklist" />
+            <input type="submit" value="Add" />
           </form>
 
         {this.props.books.map((book) => {
@@ -37,8 +36,7 @@ class BookList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     books: state.books
-  }
-  
+  }  
 }
 
 export default connect(mapStateToProps)(BookList)

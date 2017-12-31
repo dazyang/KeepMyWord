@@ -1,11 +1,11 @@
 const defaultConn = require('./connection')
 
-const getBooks = (testConn) => {
+const getWords = (testConn) => {
   const db = testConn || defaultConn
-  return db('populateBooks')
-    .select() 
+  return db('populateWords')
+    .select('id', 'word')
 }
 
 module.exports = {
-  getBooks
+  getWords
 }

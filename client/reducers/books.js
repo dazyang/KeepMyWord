@@ -1,11 +1,6 @@
-import { RECEIVE_BOOKS } from '../actions/getBooks'
-
-// const initialState = bookData.books
-// const initialState = []
-
 function books (state = [], action) {
   switch (action.type) {
-    case "RECEIVE_BOOKS":
+    case "RECEIVED_BOOKS":
     return action.books
     default:
     return state
