@@ -6,9 +6,16 @@ import { getBooks } from '../actions/getBooks.js'
 import SavedBooks from './SavedBooks.jsx'
 
 class BookList extends React.Component {
-    componentDidMount() {
-      this.props.dispatch(getBooks())
-    }
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //     newBook: ''
+  //   }
+  // }
+  
+  componentDidMount() {
+    this.props.dispatch(getBooks())
+  }
   
   render() {
     return (

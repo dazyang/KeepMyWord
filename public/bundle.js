@@ -13839,6 +13839,14 @@ var BookList = function (_React$Component) {
 
   _createClass(BookList, [{
     key: 'componentDidMount',
+
+    // constructor (props) {
+    //   super(props)
+    //   this.state = {
+    //     newBook: ''
+    //   }
+    // }
+
     value: function componentDidMount() {
       this.props.dispatch((0, _getBooks.getBooks)());
     }
