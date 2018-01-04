@@ -9,7 +9,7 @@ class BookList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      newBook : {}
+        newBook: {}
     }
     this.submitBook = this.submitBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -39,14 +39,15 @@ class BookList extends React.Component {
             <label>Add a book{' '} 
             <input name="bookTitle" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
             by
-            <input name="author" className="insert-name" type='text' placeholder='Author' onChange={this.handleChange}/>
+            <input name="author" className="insert-name" type='text' placeholder='Author' onChange={this.handleChange}/>{''}
+            <input name="author" className="insert-name" type='text' placeholder='Country' onChange={this.handleChange} />
             </label>
             <input type="submit" value="Add" />
           </form>
 
         {this.props.books.map((book, id) => {
           return (
-            <SavedBooks key={book.id} book={book}/>
+            <SavedBooks key={id} book={book}/>
           )
         })}
 

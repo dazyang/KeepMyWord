@@ -13900,12 +13900,14 @@ var BookList = function (_React$Component) {
             ' ',
             _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
             'by',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange })
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange }),
+            '',
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.handleChange })
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
         this.props.books.map(function (book, id) {
-          return _react2.default.createElement(_SavedBooks2.default, { key: book.id, book: book });
+          return _react2.default.createElement(_SavedBooks2.default, { key: id, book: book });
         })
       );
     }
