@@ -9,7 +9,7 @@ class BookList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      newBook : { }
+      newBook : {}
     }
     this.submitBook = this.submitBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -27,8 +27,8 @@ class BookList extends React.Component {
 
   submitBook(evt) {
     evt.preventDefault()
-    const {newBook} = this.state
-    this.props.dispatch(postBooks(newBook))
+    evt.target.reset()
+    this.props.dispatch(postBooks(this.state.newBook))
     alert('Your book has been submitted')
   }
   
@@ -44,7 +44,7 @@ class BookList extends React.Component {
             <input type="submit" value="Add" />
           </form>
 
-        {this.props.books.map((book) => {
+        {this.props.books.map((book, id) => {
           return (
             <SavedBooks key={book.id} book={book}/>
           )

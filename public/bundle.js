@@ -13880,9 +13880,8 @@ var BookList = function (_React$Component) {
     key: 'submitBook',
     value: function submitBook(evt) {
       evt.preventDefault();
-      var newBook = this.state.newBook;
-
-      this.props.dispatch((0, _bookActions.postBooks)(newBook));
+      evt.target.reset();
+      this.props.dispatch((0, _bookActions.postBooks)(this.state.newBook));
       alert('Your book has been submitted');
     }
   }, {
@@ -13905,7 +13904,7 @@ var BookList = function (_React$Component) {
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
-        this.props.books.map(function (book) {
+        this.props.books.map(function (book, id) {
           return _react2.default.createElement(_SavedBooks2.default, { key: book.id, book: book });
         })
       );
