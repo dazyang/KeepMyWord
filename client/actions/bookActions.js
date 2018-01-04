@@ -9,6 +9,13 @@ export const receiveBooks = (books) => {
   }
 }
 
+export const saveBookToDb = (newBook) => {
+  return {
+    type: "RECEIVE_NEW_BOOK",
+    newBook
+  }
+}
+
 export function getBooks () {
   return (dispatch) => {
     request
@@ -20,5 +27,15 @@ export function getBooks () {
         }
         dispatch(receiveBooks(res.body))
       })
+  }
+}
+
+export function addBooks (newBook) {
+  return (dispatch) => {
+    request
+    .post('/booklists', {newBook})
+    .then(res => {
+      dispatch(saveBookToDb(res.body))
+    })
   }
 }

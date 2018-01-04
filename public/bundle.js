@@ -13725,8 +13725,9 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.receiveBooks = undefined;
+exports.saveBookToDb = exports.receiveBooks = undefined;
 exports.getBooks = getBooks;
+exports.addBooks = addBooks;
 
 var _superagent = __webpack_require__(115);
 
@@ -13743,6 +13744,13 @@ var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
   };
 };
 
+var saveBookToDb = exports.saveBookToDb = function saveBookToDb(newBook) {
+  return {
+    type: "RECEIVE_NEW_BOOK",
+    newBook: newBook
+  };
+};
+
 function getBooks() {
   return function (dispatch) {
     _superagent2.default.get('/api/v1/booklists').end(function (err, res) {
@@ -13751,6 +13759,14 @@ function getBooks() {
         return;
       }
       dispatch(receiveBooks(res.body));
+    });
+  };
+}
+
+function addBooks(newBook) {
+  return function (dispatch) {
+    _superagent2.default.post('/booklists', { newBook: newBook }).then(function (res) {
+      dispatch(saveBookToDb(res.body));
     });
   };
 }
@@ -13812,13 +13828,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(40);
 
-var _getBooks = __webpack_require__(123);
+var _bookActions = __webpack_require__(123);
 
 var _SavedBooks = __webpack_require__(127);
 
 var _SavedBooks2 = _interopRequireDefault(_SavedBooks);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13831,24 +13849,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var BookList = function (_React$Component) {
   _inherits(BookList, _React$Component);
 
-  function BookList() {
+  function BookList(props) {
     _classCallCheck(this, BookList);
 
-    return _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
+
+    _this.state = {
+      bookTitle: '',
+      author: ''
+    };
+    _this.submitBook = _this.submitBook.bind(_this);
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
   }
 
   _createClass(BookList, [{
     key: 'componentDidMount',
-
-    // constructor (props) {
-    //   super(props)
-    //   this.state = {
-    //     newBook: ''
-    //   }
-    // }
-
     value: function componentDidMount() {
-      this.props.dispatch((0, _getBooks.getBooks)());
+      this.props.dispatch((0, _bookActions.getBooks)());
+    }
+  }, {
+    key: 'handleChange',
+    value: function handleChange(evt) {
+      this.setState(_defineProperty({}, evt.target.name, evt.target.value));
+    }
+  }, {
+    key: 'submitBook',
+    value: function submitBook(evt) {
+      evt.preventDefault();
+      var newBook = this.state.bookTitle;
+      var newAuthor = this.state.author;
+      this.props.dispatch((0, _bookActions.addBooks)(newBook, newAuthor));
+      alert('Your book has been submitted');
     }
   }, {
     key: 'render',
@@ -13858,15 +13890,15 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          null,
+          { onSubmit: this.submitExpense },
           _react2.default.createElement(
             'label',
             null,
             'Add a book',
             ' ',
-            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...' }),
+            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
             'by',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author' })
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange })
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
@@ -13966,7 +13998,7 @@ var SavedBooks = function SavedBooks(props) {
       book.book_title
     ),
     ' ',
-    'by',
+    '/',
     ' ',
     _react2.default.createElement(
       'span',
@@ -14157,6 +14189,9 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function books() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
@@ -14164,6 +14199,8 @@ function books() {
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books;
+    case "RECEIVE_NEW_BOOK":
+      return [].concat(_toConsumableArray(state), [action.newBook]);
     default:
       return state;
   }

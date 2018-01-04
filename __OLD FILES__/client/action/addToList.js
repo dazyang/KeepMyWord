@@ -1,8 +1,9 @@
-export const ADD_TO_LIST = 'ADD_TO_LIST'
+export const ADD_BOOK = 'ADD_BOOK'
 
-export const addToList = (id) => {
+export const addBook = (bookTitle, author) => {
   return {
-    type: 'ADD_TO_LIST',
-    id
+    type: 'ADD_BOOK',
+    bookTitle,
+    author
   }
 }
