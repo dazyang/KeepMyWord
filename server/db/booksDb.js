@@ -6,13 +6,13 @@ const getBooks = () => {
     .select('book_title', 'author', 'country') 
 }
 
-function saveBook({book_title, author, country}) {
+function saveBook(newBook) {
   const db = defaultConn
   return db('populateBooks')
     .insert({
-      book_title: book_title,
-      author: author,
-      country: country
+      book_title: newBook.book_title,
+      author: newBook.author,
+      country: newBook.country
     })
 }
 

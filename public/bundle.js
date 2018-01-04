@@ -13725,7 +13725,7 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addBook = exports.receiveBooks = undefined;
+exports.receiveNewBook = exports.addBook = exports.receiveBooks = undefined;
 exports.getBooks = getBooks;
 exports.postBooks = postBooks;
 
@@ -13744,9 +13744,15 @@ var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
   };
 };
 
-var addBook = exports.addBook = function addBook(newBook) {
+var addBook = exports.addBook = function addBook() {
   return {
-    type: "ADD_BOOK",
+    type: "ADD_BOOK"
+  };
+};
+
+var receiveNewBook = exports.receiveNewBook = function receiveNewBook(newBook) {
+  return {
+    type: "RECEIVED_NEW_BOOK",
     newBook: newBook
   };
 };
@@ -13765,15 +13771,18 @@ function getBooks() {
 
 function postBooks(newBook) {
   return function (dispatch) {
-    _superagent2.default.post('api/v1/booklists').send(newBook).end(function (err, res) {
-      if (err) {
-        console.log(err.mesage);
-        return;
-      }
-      dispatch(addBook(res.body));
+    _superagent2.default.post('api/v1/booklists').then(function (res) {
+      dispatch(receiveNewBook(res.body));
     });
   };
 }
+
+// .send(newBook)
+//   .end((err, res) => {
+//     if (err) {
+//       console.log(err.mesage)
+//       return
+//     }
 
 /***/ }),
 /* 124 */
@@ -13859,7 +13868,9 @@ var BookList = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
 
     _this.state = {
-      newBook: {}
+      book_title: '',
+      author: '',
+      country: ''
     };
     _this.submitBook = _this.submitBook.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
@@ -13880,8 +13891,13 @@ var BookList = function (_React$Component) {
     key: 'submitBook',
     value: function submitBook(evt) {
       evt.preventDefault();
-      evt.target.reset();
-      this.props.dispatch((0, _bookActions.postBooks)(this.state.newBook));
+      var _state = this.state,
+          book_title = _state.book_title,
+          author = _state.author,
+          country = _state.country;
+
+      var newBook = { book_title: book_title, author: author, country: country };
+      this.props.dispatch((0, _bookActions.postBooks)(newBook));
       alert('Your book has been submitted');
     }
   }, {
@@ -14200,12 +14216,14 @@ function books() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
-  var newState = [].concat(_toConsumableArray(state));
+  // let newState = [...state]
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books;
     case "ADD_BOOK":
-      return [].concat(_toConsumableArray(newState), [action.newBook]);
+      return [].concat(_toConsumableArray(action.books));
+    case "RECEIVED_NEW_BOOK":
+      return [].concat(_toConsumableArray(state), [action.newBook]);
     default:
       return state;
   }

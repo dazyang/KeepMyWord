@@ -9,7 +9,9 @@ class BookList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-        newBook: {}
+        book_title: '',
+        author: '',
+        country:''
     }
     this.submitBook = this.submitBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -27,8 +29,9 @@ class BookList extends React.Component {
 
   submitBook(evt) {
     evt.preventDefault()
-    evt.target.reset()
-    this.props.dispatch(postBooks(this.state.newBook))
+    const {book_title, author, country} = this.state
+    const newBook = {book_title, author, country}
+    this.props.dispatch(postBooks(newBook))
     alert('Your book has been submitted')
   }
   
