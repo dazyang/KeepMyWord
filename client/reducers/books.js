@@ -1,5 +1,4 @@
 function books (state = [], action) {
-  // let newState = [...state]
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books

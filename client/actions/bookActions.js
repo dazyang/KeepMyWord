@@ -40,15 +40,14 @@ export function postBooks (newBook) {
   return (dispatch) => {
     request
     .post('api/v1/booklists')
-    .then(res => {
-    dispatch(receiveNewBook(res.body))
-  })
+    .send(newBook)
+    // console.log(newBook)
+      .end((err, res) => {
+        if (err) {
+          console.log(err.mesage)
+          return
+        }
+        dispatch(receiveNewBook(res.body))
+      })
+  }
 }
-}
-
-// .send(newBook)
-//   .end((err, res) => {
-//     if (err) {
-//       console.log(err.mesage)
-//       return
-//     }

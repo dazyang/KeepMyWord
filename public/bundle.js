@@ -13771,18 +13771,17 @@ function getBooks() {
 
 function postBooks(newBook) {
   return function (dispatch) {
-    _superagent2.default.post('api/v1/booklists').then(function (res) {
+    _superagent2.default.post('api/v1/booklists').send(newBook)
+    // console.log(newBook)
+    .end(function (err, res) {
+      if (err) {
+        console.log(err.mesage);
+        return;
+      }
       dispatch(receiveNewBook(res.body));
     });
   };
 }
-
-// .send(newBook)
-//   .end((err, res) => {
-//     if (err) {
-//       console.log(err.mesage)
-//       return
-//     }
 
 /***/ }),
 /* 124 */
