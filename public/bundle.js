@@ -13725,9 +13725,9 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.saveBookToDb = exports.receiveBooks = undefined;
+exports.addBook = exports.receiveBooks = undefined;
 exports.getBooks = getBooks;
-exports.addBooks = addBooks;
+exports.postBooks = postBooks;
 
 var _superagent = __webpack_require__(115);
 
@@ -13744,9 +13744,9 @@ var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
   };
 };
 
-var saveBookToDb = exports.saveBookToDb = function saveBookToDb(newBook) {
+var addBook = exports.addBook = function addBook(newBook) {
   return {
-    type: "RECEIVE_NEW_BOOK",
+    type: "ADD_BOOK",
     newBook: newBook
   };
 };
@@ -13763,10 +13763,14 @@ function getBooks() {
   };
 }
 
-function addBooks(newBook) {
+function postBooks(newBook) {
   return function (dispatch) {
-    _superagent2.default.post('/booklists', { newBook: newBook }).then(function (res) {
-      dispatch(saveBookToDb(res.body));
+    _superagent2.default.post('api/v1/booklists').send(newBook).end(function (err, res) {
+      if (err) {
+        console.log(err.mesage);
+        return;
+      }
+      dispatch(addBook(res.body));
     });
   };
 }
@@ -13855,8 +13859,7 @@ var BookList = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
 
     _this.state = {
-      bookTitle: '',
-      author: ''
+      newBook: {}
     };
     _this.submitBook = _this.submitBook.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
@@ -13877,9 +13880,9 @@ var BookList = function (_React$Component) {
     key: 'submitBook',
     value: function submitBook(evt) {
       evt.preventDefault();
-      var newBook = this.state.bookTitle;
-      var newAuthor = this.state.author;
-      this.props.dispatch((0, _bookActions.addBooks)(newBook, newAuthor));
+      var newBook = this.state.newBook;
+
+      this.props.dispatch((0, _bookActions.postBooks)(newBook));
       alert('Your book has been submitted');
     }
   }, {
@@ -13890,7 +13893,7 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          { onSubmit: this.submitExpense },
+          { onSubmit: this.submitBook },
           _react2.default.createElement(
             'label',
             null,
@@ -14196,11 +14199,12 @@ function books() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+  var newState = [].concat(_toConsumableArray(state));
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books;
-    case "RECEIVE_NEW_BOOK":
-      return [].concat(_toConsumableArray(state), [action.newBook]);
+    case "ADD_BOOK":
+      return [].concat(_toConsumableArray(newState), [action.newBook]);
     default:
       return state;
   }

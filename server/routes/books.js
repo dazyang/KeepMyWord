@@ -11,12 +11,9 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/booklists', (req, res) => {
-  const newBook = {
-    book_title: req.body.bookTitle,
-    author: req.body.author
-  }
-  booksDb.saveBook(newBook)
+router.post('/', (req, res) => {
+  // let db = req.app.get('db')
+  booksDb.saveBook(req.body)
     .then(newBook => {
       res.json(newBook)
     })
@@ -26,13 +23,3 @@ router.post('/booklists', (req, res) => {
 })
 
 module.exports = router
-
-
-// router.post('/booklists', (req, res) => {
-//   let { comment } = req.body
-//   comment.user_id = req.user.id
-//   comment.recipe_id = req.params.id
-//   addComment(comment)
-//     .then(newComment => res.json(newComment))
-//     .catch(err => res.status(500).end())
-// })

@@ -1,9 +1,10 @@
 function books (state = [], action) {
+  let newState = [...state]
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books
-    case "RECEIVE_NEW_BOOK":
-      return [...state, action.newBook]
+    case "ADD_BOOK":
+      return [...newState, action.newBook]
     default:
      return state
   }

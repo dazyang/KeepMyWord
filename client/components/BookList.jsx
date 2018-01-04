@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getBooks, addBooks } from '../actions/bookActions.js'
+import { getBooks, postBooks } from '../actions/bookActions.js'
 //problem was forgot to destructuring getBooks, that's why it didn't recognize the function
 import SavedBooks from './SavedBooks.jsx'
 
@@ -9,8 +9,7 @@ class BookList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      bookTitle: '',
-      author: ''
+      newBook : { }
     }
     this.submitBook = this.submitBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -28,16 +27,15 @@ class BookList extends React.Component {
 
   submitBook(evt) {
     evt.preventDefault()
-    const newBook = this.state.bookTitle
-    const newAuthor = this.state.author
-    this.props.dispatch(addBooks(newBook, newAuthor))
+    const {newBook} = this.state
+    this.props.dispatch(postBooks(newBook))
     alert('Your book has been submitted')
   }
   
   render() {
     return (
         <div className='container'>
-        <form onSubmit={this.submitExpense}>
+        <form onSubmit={this.submitBook}>
             <label>Add a book{' '} 
             <input name="bookTitle" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
             by

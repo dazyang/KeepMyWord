@@ -9,9 +9,9 @@ export const receiveBooks = (books) => {
   }
 }
 
-export const saveBookToDb = (newBook) => {
+export const addBook = (newBook) => {
   return {
-    type: "RECEIVE_NEW_BOOK",
+    type: "ADD_BOOK",
     newBook
   }
 }
@@ -19,23 +19,28 @@ export const saveBookToDb = (newBook) => {
 export function getBooks () {
   return (dispatch) => {
     request
-      .get('/api/v1/booklists')
-      .end((err, res) => {
-        if (err) {
-          console.error(err.message)
-          return
-        }
-        dispatch(receiveBooks(res.body))
-      })
+    .get('/api/v1/booklists')
+    .end((err, res) => {
+      if (err) {
+        console.error(err.message)
+        return
+      }
+      dispatch(receiveBooks(res.body))
+    })
   }
 }
 
-export function addBooks (newBook) {
+export function postBooks (newBook) {
   return (dispatch) => {
     request
-    .post('/booklists', {newBook})
-    .then(res => {
-      dispatch(saveBookToDb(res.body))
-    })
+    .post('api/v1/booklists')
+    .send(newBook)
+      .end((err, res) => {
+        if (err) {
+          console.log(err.mesage)
+          return
+        }
+        dispatch(addBook(res.body))
+      })
   }
 }

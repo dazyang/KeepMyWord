@@ -6,14 +6,15 @@ const getBooks = (testConn) => {
     .select() 
 }
 
-function saveBook(newBook, testConn) {
+function saveBook(newBook,testConn) {
   const db = testConn || defaultConn
+  const insertBook = {
+    book_title: newBook.book_title,
+    author: newBook.author
+  }
   return db('populateBooks')
-    .insert({
-      book_title: newBook.book_title,
-      author: newBook.author
-    })
-    .then(book => getBooks())
+    .insert(insertBook)
+    .then(book => getBooks(book))
     .catch(err => console.log(err))
   }
 
