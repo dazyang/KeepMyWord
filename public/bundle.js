@@ -13716,46 +13716,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 exports['default'] = thunk;
 
 /***/ }),
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.receiveBooks = undefined;
-exports.getBooks = getBooks;
-
-var _superagent = __webpack_require__(115);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// export const RECEIVED_BOOKS = 'RECEIVED_BOOKS'
-
-var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
-  return {
-    type: "RECEIVED_BOOKS",
-    books: books
-  };
-};
-
-function getBooks() {
-  return function (dispatch) {
-    _superagent2.default.get('/api/v1/booklists').end(function (err, res) {
-      if (err) {
-        console.error(err.message);
-        return;
-      }
-      dispatch(receiveBooks(res.body));
-    });
-  };
-}
-
-/***/ }),
+/* 123 */,
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13812,7 +13773,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(40);
 
-var _getBooks = __webpack_require__(123);
+var _bookActions = __webpack_require__(286);
 
 var _SavedBooks = __webpack_require__(127);
 
@@ -13831,24 +13792,41 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var BookList = function (_React$Component) {
   _inherits(BookList, _React$Component);
 
-  function BookList() {
+  function BookList(props) {
     _classCallCheck(this, BookList);
 
-    return _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
+
+    _this.state = {
+      newBook: {
+        book_title: 'newbook',
+        author: 'new author',
+        country: 'new country'
+      }
+    };
+    _this.submitBook = _this.submitBook.bind(_this);
+    _this.updateBookInput = _this.updateBookInput.bind(_this);
+    return _this;
   }
 
   _createClass(BookList, [{
     key: 'componentDidMount',
-
-    // constructor (props) {
-    //   super(props)
-    //   this.state = {
-    //     newBook: ''
-    //   }
-    // }
-
     value: function componentDidMount() {
-      this.props.dispatch((0, _getBooks.getBooks)());
+      this.props.dispatch((0, _bookActions.getBooks)());
+    }
+  }, {
+    key: 'submitBook',
+    value: function submitBook(e) {
+      e.preventDefault();
+      e.target.reset();
+      this.props.dispatch((0, _bookActions.postBookRequest)(this.state.newBook));
+    }
+  }, {
+    key: 'updateBookInput',
+    value: function updateBookInput(e) {
+      var newBook = this.state.newBook;
+      newBook[e.target.name] = e.target.value;
+      this.setState({ newBook: newBook });
     }
   }, {
     key: 'render',
@@ -13858,15 +13836,16 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          null,
+          { onSubmit: this.sumbitBook },
           _react2.default.createElement(
             'label',
             null,
             'Add a book',
             ' ',
-            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...' }),
+            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.updateBookInput }),
             'by',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author' })
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.updateBookInput }),
+            _react2.default.createElement('input', { name: 'country', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.updateBookInput })
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
@@ -14157,11 +14136,17 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function books() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+  var newState = [].concat(_toConsumableArray(state));
   switch (action.type) {
+    case "ADD_BOOK":
+      return [].concat(_toConsumableArray(newState), [action.newBook]);
     case "RECEIVED_BOOKS":
       return action.books;
     default:
@@ -30892,6 +30877,69 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addBook = exports.receiveBooks = undefined;
+exports.getBooks = getBooks;
+exports.postBookRequest = postBookRequest;
+
+var _superagent = __webpack_require__(115);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
+  return {
+    type: "RECEIVED_BOOKS",
+    books: books
+  };
+};
+
+var addBook = exports.addBook = function addBook(newBook) {
+  return {
+    type: "ADD_BOOK",
+    newBook: newBook
+  };
+};
+
+function getBooks() {
+  return function (dispatch) {
+    _superagent2.default.get('/api/v1/booklists').end(function (err, res) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      dispatch(receiveBooks(res.body));
+    });
+  };
+}
+
+function postBookRequest(userAdd) {
+  var newBook = {
+    book_title: userAdd.book_title,
+    author: userAdd.author,
+    country: userAdd.country
+  };
+  return function (dispatch) {
+    _superagent2.default.post('api/v1/booklist').send(newBook).end(function (err, res) {
+      if (err) {
+        console.log(err.message);
+        return;
+      }
+      dispatch(addBook(res.body));
+    });
+  };
+}
 
 /***/ })
 /******/ ]);
