@@ -13716,6 +13716,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 exports['default'] = thunk;
 
 /***/ }),
+<<<<<<< HEAD
 /* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13784,6 +13785,9 @@ function postBooks(newBook) {
 }
 
 /***/ }),
+=======
+/* 123 */,
+>>>>>>> 143e826388bd950501b67d2b15df3addb30896cc
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13840,7 +13844,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(40);
 
+<<<<<<< HEAD
 var _bookActions = __webpack_require__(123);
+=======
+var _bookActions = __webpack_require__(286);
+>>>>>>> 143e826388bd950501b67d2b15df3addb30896cc
 
 var _SavedBooks = __webpack_require__(127);
 
@@ -13867,12 +13875,23 @@ var BookList = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (BookList.__proto__ || Object.getPrototypeOf(BookList)).call(this, props));
 
     _this.state = {
+<<<<<<< HEAD
       book_title: '',
       author: '',
       country: ''
     };
     _this.submitBook = _this.submitBook.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
+=======
+      newBook: {
+        book_title: 'newbook',
+        author: 'new author',
+        country: 'new country'
+      }
+    };
+    _this.submitBook = _this.submitBook.bind(_this);
+    _this.updateBookInput = _this.updateBookInput.bind(_this);
+>>>>>>> 143e826388bd950501b67d2b15df3addb30896cc
     return _this;
   }
 
@@ -13882,6 +13901,7 @@ var BookList = function (_React$Component) {
       this.props.dispatch((0, _bookActions.getBooks)());
     }
   }, {
+<<<<<<< HEAD
     key: 'handleChange',
     value: function handleChange(evt) {
       this.setState(_defineProperty({}, evt.target.name, evt.target.value));
@@ -13898,6 +13918,20 @@ var BookList = function (_React$Component) {
       var newBook = { book_title: book_title, author: author, country: country };
       this.props.dispatch((0, _bookActions.postBooks)(newBook));
       alert('Your book has been submitted');
+=======
+    key: 'submitBook',
+    value: function submitBook(e) {
+      e.preventDefault();
+      e.target.reset();
+      this.props.dispatch((0, _bookActions.postBookRequest)(this.state.newBook));
+    }
+  }, {
+    key: 'updateBookInput',
+    value: function updateBookInput(e) {
+      var newBook = this.state.newBook;
+      newBook[e.target.name] = e.target.value;
+      this.setState({ newBook: newBook });
+>>>>>>> 143e826388bd950501b67d2b15df3addb30896cc
     }
   }, {
     key: 'render',
@@ -13907,17 +13941,16 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          { onSubmit: this.submitBook },
+          { onSubmit: this.sumbitBook },
           _react2.default.createElement(
             'label',
             null,
             'Add a book',
             ' ',
-            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
+            _react2.default.createElement('input', { name: 'bookTitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.updateBookInput }),
             'by',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange }),
-            '',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.handleChange })
+            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.updateBookInput }),
+            _react2.default.createElement('input', { name: 'country', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.updateBookInput })
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
@@ -14215,8 +14248,14 @@ function books() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+<<<<<<< HEAD
   // let newState = [...state]
+=======
+  var newState = [].concat(_toConsumableArray(state));
+>>>>>>> 143e826388bd950501b67d2b15df3addb30896cc
   switch (action.type) {
+    case "ADD_BOOK":
+      return [].concat(_toConsumableArray(newState), [action.newBook]);
     case "RECEIVED_BOOKS":
       return action.books;
     case "ADD_BOOK":
@@ -30951,6 +30990,69 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addBook = exports.receiveBooks = undefined;
+exports.getBooks = getBooks;
+exports.postBookRequest = postBookRequest;
+
+var _superagent = __webpack_require__(115);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
+  return {
+    type: "RECEIVED_BOOKS",
+    books: books
+  };
+};
+
+var addBook = exports.addBook = function addBook(newBook) {
+  return {
+    type: "ADD_BOOK",
+    newBook: newBook
+  };
+};
+
+function getBooks() {
+  return function (dispatch) {
+    _superagent2.default.get('/api/v1/booklists').end(function (err, res) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      dispatch(receiveBooks(res.body));
+    });
+  };
+}
+
+function postBookRequest(userAdd) {
+  var newBook = {
+    book_title: userAdd.book_title,
+    author: userAdd.author,
+    country: userAdd.country
+  };
+  return function (dispatch) {
+    _superagent2.default.post('api/v1/booklist').send(newBook).end(function (err, res) {
+      if (err) {
+        console.log(err.message);
+        return;
+      }
+      dispatch(addBook(res.body));
+    });
+  };
+}
 
 /***/ })
 /******/ ]);

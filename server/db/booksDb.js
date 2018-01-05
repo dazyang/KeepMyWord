@@ -6,19 +6,16 @@ const getBooks = () => {
     .select('book_title', 'author', 'country') 
 }
 
-function saveBook(newBook) {
+const insertBook = (book) => {
   const db = defaultConn
   return db('populateBooks')
-    .insert({
-      book_title: newBook.book_title,
-      author: newBook.author,
-      country: newBook.country
-    })
+    .insert(book)
+    .then(newBook => getBooks(newBook))
 }
 
 module.exports = {
   getBooks,
-  saveBook
+  insertBook
 }
 
 

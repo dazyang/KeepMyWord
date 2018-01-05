@@ -4,7 +4,6 @@ const router = express.Router()
 const booksDb = require('../db/booksDb')
 
 router.get('/', (req, res) => {
-  // let db = req.app.get('db')
   booksDb.getBooks()
     .then(books => {
       res.json(books)
@@ -12,14 +11,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  booksDb.saveBook(req.body)
-  // console.log(book)
-    .then(book => {
-      res.json(book)
-    })
-    .catch(() => {
-      res.status(500).end()
-    })
+  booksDb.insertBook(req.body)
+    .then(newBook => res.json(newBook))
+    .catch(err => res.status(500).send(err.message + ' ' + '- SERVER ERROR'))
 })
 
 module.exports = router
