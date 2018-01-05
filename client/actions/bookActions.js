@@ -7,9 +7,15 @@ export const receiveBooks = (books) => {
   }
 }
 
-export const addBook = (newBook) => {
+export const addBook = () => {
   return {
-    type: "ADD_BOOK",
+    type: "ADD_BOOK"
+  }
+}
+
+export const receiveNewBook = (newBook) => {
+  return {
+    type: "RECEIVED_NEW_BOOK",
     newBook
   }
 }
@@ -29,22 +35,12 @@ export function getBooks () {
 }
 
 
-export function postBookRequest (userAdd) {
-  const newBook = {
-    book_title: userAdd.book_title,
-    author: userAdd.author,
-    country: userAdd.country
-  }
+export function postBookRequest (newBook) {
   return (dispatch) => {
     request
       .post('api/v1/booklist')
-      .send(newBook)
-      .end((err,res)=> {
-        if (err) {
-          console.log(err.message)
-          return
-        }
-        dispatch(addBook(res.body))
+      .then(res => {
+        dispatch(receiveNewBook(res.body))
       })
   }
 }

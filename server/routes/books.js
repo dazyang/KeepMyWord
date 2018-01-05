@@ -11,9 +11,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  booksDb.insertBook(req.body)
-    .then(newBook => res.json(newBook))
-    .catch(err => res.status(500).send(err.message + ' ' + '- SERVER ERROR'))
+  const {book_title, author, country} = req.body
+  const newBook = { book_title, author, country }
+  booksDb.insertBook(newBook)
+    .then(book => {
+      res.json(book)
+    })
+    .catch((err) => {
+      res.status(500).send(err.message)
+    })
 })
+  module.exports = router
 
-module.exports = router

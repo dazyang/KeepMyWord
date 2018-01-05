@@ -6,11 +6,23 @@ const getBooks = () => {
     .select() 
 }
 
+const getBook = (id) => {
+  const db = defaultConn
+  return db('populateBooks')
+    .where('id', id)
+    .first()
+}
+
 const insertBook = (book) => {
   const db = defaultConn
   return db('populateBooks')
-    .insert(book)
-    .then(newBook => getBooks(newBook))
+    .insert({
+      book_title: book.book_title,
+      author: book.author,
+      country: book.country
+    })
+    .then(id => getBook(id[0]))
+    .catch(err => console.log(err))
 }
 
 module.exports = {

@@ -3,20 +3,18 @@ import { connect } from 'react-redux'
 
 import { getBooks, postBookRequest } from '../actions/bookActions.js'
 //problem was forgot to destructuring getBooks, that's why it didn't recognize the function
-import SavedBooks from './SavedBooks.jsx'
+import BookDatabase from './BookDatabase.jsx'
 
 class BookList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      newBook: {
-        book_title: 'newbook',
-        author: 'new author',
-        country: 'new country'
-      }
+        book_title: '',
+        author: '',
+        country: ''
     }
     this.submitBook = this.submitBook.bind(this)
-    this.updateBookInput = this.updateBookInput.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   
   componentDidMount() {
@@ -33,39 +31,26 @@ class BookList extends React.Component {
     evt.preventDefault()
     const {book_title, author, country} = this.state
     const newBook = {book_title, author, country}
-    this.props.dispatch(postBooks(newBook))
+    this.props.dispatch(postBookRequest(newBook))
     alert('Your book has been submitted')
   }
-  
-  submitBook(e) {
-    e.preventDefault()
-    e.target.reset()
-    this.props.dispatch(postBookRequest(this.state.newBook))
-  }
-
-  updateBookInput(e) {
-    let newBook = this.state.newBook
-    newBook[e.target.name] = e.target.value
-    this.setState({newBook})
-  }
-
 
   render() {
     return (
         <div className='container'>
           <form onSubmit={this.sumbitBook}>
             <label>Add a book{' '} 
-            <input name="bookTitle" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.updateBookInput}/>
+            <input name="booktitle" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
             by
-            <input name="author" className="insert-name" type='text' placeholder='Author' onChange={this.updateBookInput}/>
-            <input name="country" className="insert-name" type='text' placeholder='Country' onChange={this.updateBookInput} />
+            <input name="author" className="insert-name" type='text' placeholder='Author' onChange={this.handleChange}/>
+            <input name="country" className="insert-name" type='text' placeholder='Country' onChange={this.handleChange} />
             </label>
             <input type="submit" value="Add" />
           </form>
 
         {this.props.books.map((book, id) => {
           return (
-            <SavedBooks key={id} book={book}/>
+            <BookDatabase key={id} book={book}/>
           )
         })}
 
