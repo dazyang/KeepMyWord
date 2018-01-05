@@ -14036,46 +14036,7 @@ var Header = function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(38);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SavedWords = function SavedWords(props) {
-  var word = props.words;
-  return _react2.default.createElement(
-    'div',
-    { className: 'book-titles' },
-    _react2.default.createElement(
-      'span',
-      null,
-      word.word
-    ),
-    ' ',
-    _react2.default.createElement(
-      'span',
-      { id: 'country' },
-      word.book_id
-    )
-  );
-};
-
-exports.default = SavedWords;
-
-/***/ }),
+/* 128 */,
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14096,9 +14057,9 @@ var _reactRedux = __webpack_require__(40);
 
 var _getWords = __webpack_require__(124);
 
-var _SavedWords = __webpack_require__(128);
+var _WordDatabase = __webpack_require__(286);
 
-var _SavedWords2 = _interopRequireDefault(_SavedWords);
+var _WordDatabase2 = _interopRequireDefault(_WordDatabase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14129,7 +14090,7 @@ var WordBank = function (_React$Component) {
         'div',
         { className: 'container' },
         this.props.words.map(function (word) {
-          return _react2.default.createElement(_SavedWords2.default, { key: word.id, words: word });
+          return _react2.default.createElement(_WordDatabase2.default, { key: word.id, words: word });
         })
       );
     }
@@ -30941,6 +30902,46 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SavedWords = function SavedWords(props) {
+  var word = props.words;
+  return _react2.default.createElement(
+    'div',
+    { className: 'book-titles' },
+    _react2.default.createElement(
+      'span',
+      null,
+      word.word
+    ),
+    ' ',
+    _react2.default.createElement(
+      'span',
+      { id: 'country' },
+      word.book_id
+    )
+  );
+};
+
+exports.default = SavedWords;
 
 /***/ })
 /******/ ]);
