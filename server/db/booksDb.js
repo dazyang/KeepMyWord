@@ -3,7 +3,7 @@ const defaultConn = require('./connection')
 const getBooks = () => {
   const db = defaultConn
   return db('populateBooks')
-    .select('book_title', 'author', 'country') 
+    .select() 
 }
 
 const insertBook = (book) => {
