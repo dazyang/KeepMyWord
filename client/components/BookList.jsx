@@ -13,7 +13,7 @@ class BookList extends React.Component {
         author: '',
         country: ''
     }
-    this.addBook = this.addBook.bind(this)
+    this.handleAddBook = this.handleAddBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
   
@@ -27,7 +27,7 @@ class BookList extends React.Component {
     })
   }
 
-  addBook(e) {
+  handleAddBook(e) {
     e.preventDefault()
     e.target.reset()
     const {book_title, author, country} = this.state
@@ -39,7 +39,7 @@ class BookList extends React.Component {
   render() {
     return (
         <div className='container'>
-          <form onSubmit={this.addBook}>
+          <form onSubmit={this.handleAddBook}>
             Add a book{' '} 
             <input name="book_title" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
             by

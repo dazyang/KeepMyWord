@@ -13919,7 +13919,7 @@ var BookList = function (_React$Component) {
       author: '',
       country: ''
     };
-    _this.addBook = _this.addBook.bind(_this);
+    _this.handleAddBook = _this.handleAddBook.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
@@ -13935,8 +13935,8 @@ var BookList = function (_React$Component) {
       this.setState(_defineProperty({}, evt.target.name, evt.target.value));
     }
   }, {
-    key: 'addBook',
-    value: function addBook(e) {
+    key: 'handleAddBook',
+    value: function handleAddBook(e) {
       e.preventDefault();
       e.target.reset();
       var _state = this.state,
@@ -13956,7 +13956,7 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          { onSubmit: this.addBook },
+          { onSubmit: this.handleAddBook },
           'Add a book',
           ' ',
           _react2.default.createElement('input', { name: 'book_title', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
