@@ -13612,7 +13612,7 @@ var _BookList = __webpack_require__(126);
 
 var _BookList2 = _interopRequireDefault(_BookList);
 
-var _WordBank = __webpack_require__(129);
+var _WordBank = __webpack_require__(128);
 
 var _WordBank2 = _interopRequireDefault(_WordBank);
 
@@ -13769,7 +13769,7 @@ function getBooks() {
 
 function postBookRequest(newBook) {
   return function (dispatch) {
-    _superagent2.default.post('api/v1/booklist').then(function (res) {
+    _superagent2.default.post('/api/v1/booklists').then(function (res) {
       dispatch(receiveNewBook(res.body));
     });
   };
@@ -13905,8 +13905,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-//problem was forgot to destructuring getBooks, that's why it didn't recognize the function
-
 
 var BookList = function (_React$Component) {
   _inherits(BookList, _React$Component);
@@ -13921,7 +13919,7 @@ var BookList = function (_React$Component) {
       author: '',
       country: ''
     };
-    _this.submitBook = _this.submitBook.bind(_this);
+    _this.addBook = _this.addBook.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
@@ -13937,9 +13935,10 @@ var BookList = function (_React$Component) {
       this.setState(_defineProperty({}, evt.target.name, evt.target.value));
     }
   }, {
-    key: 'submitBook',
-    value: function submitBook(evt) {
-      evt.preventDefault();
+    key: 'addBook',
+    value: function addBook(e) {
+      e.preventDefault();
+      e.target.reset();
       var _state = this.state,
           book_title = _state.book_title,
           author = _state.author,
@@ -13957,17 +13956,13 @@ var BookList = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(
           'form',
-          { onSubmit: this.sumbitBook },
-          _react2.default.createElement(
-            'label',
-            null,
-            'Add a book',
-            ' ',
-            _react2.default.createElement('input', { name: 'booktitle', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
-            'by',
-            _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange }),
-            _react2.default.createElement('input', { name: 'country', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.handleChange })
-          ),
+          { onSubmit: this.addBook },
+          'Add a book',
+          ' ',
+          _react2.default.createElement('input', { name: 'book_title', className: 'insert-title', type: 'text', placeholder: 'I am currently reading...', onChange: this.handleChange }),
+          'by',
+          _react2.default.createElement('input', { name: 'author', className: 'insert-name', type: 'text', placeholder: 'Author', onChange: this.handleChange }),
+          _react2.default.createElement('input', { name: 'country', className: 'insert-name', type: 'text', placeholder: 'Country', onChange: this.handleChange }),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
         this.props.books.map(function (book, id) {
@@ -14036,8 +14031,7 @@ var Header = function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 128 */,
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14057,7 +14051,7 @@ var _reactRedux = __webpack_require__(40);
 
 var _getWords = __webpack_require__(124);
 
-var _WordDatabase = __webpack_require__(286);
+var _WordDatabase = __webpack_require__(129);
 
 var _WordDatabase2 = _interopRequireDefault(_WordDatabase);
 
@@ -14106,6 +14100,46 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(WordBank);
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SavedWords = function SavedWords(props) {
+  var word = props.words;
+  return _react2.default.createElement(
+    'div',
+    { className: 'book-titles' },
+    _react2.default.createElement(
+      'span',
+      null,
+      word.word
+    ),
+    ' ',
+    _react2.default.createElement(
+      'span',
+      { id: 'country' },
+      word.book_id
+    )
+  );
+};
+
+exports.default = SavedWords;
 
 /***/ }),
 /* 130 */
@@ -30902,46 +30936,6 @@ module.exports = function(module) {
 	return module;
 };
 
-
-/***/ }),
-/* 286 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(38);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SavedWords = function SavedWords(props) {
-  var word = props.words;
-  return _react2.default.createElement(
-    'div',
-    { className: 'book-titles' },
-    _react2.default.createElement(
-      'span',
-      null,
-      word.word
-    ),
-    ' ',
-    _react2.default.createElement(
-      'span',
-      { id: 'country' },
-      word.book_id
-    )
-  );
-};
-
-exports.default = SavedWords;
 
 /***/ })
 /******/ ]);

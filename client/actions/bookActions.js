@@ -38,7 +38,7 @@ export function getBooks () {
 export function postBookRequest (newBook) {
   return (dispatch) => {
     request
-      .post('api/v1/booklist')
+      .post('/api/v1/booklists')
       .then(res => {
         dispatch(receiveNewBook(res.body))
       })

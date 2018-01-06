@@ -16,7 +16,8 @@ const getBook = (id) => {
 const insertBook = (book) => {
   const db = defaultConn
   return db('populateBooks')
-    .insert({
+  // console.log(book)
+  .insert({
       book_title: book.book_title,
       author: book.author,
       country: book.country

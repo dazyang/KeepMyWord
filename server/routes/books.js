@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const {book_title, author, country} = req.body
-  const newBook = { book_title, author, country }
+  let {book_title, author, country} = req.body
+  let newBook = { book_title, author, country }
   booksDb.insertBook(newBook)
     .then(book => {
       res.json(book)

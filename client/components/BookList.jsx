@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getBooks, postBookRequest } from '../actions/bookActions.js'
-//problem was forgot to destructuring getBooks, that's why it didn't recognize the function
+
 import BookDatabase from './BookDatabase.jsx'
 
 class BookList extends React.Component {
@@ -13,7 +13,7 @@ class BookList extends React.Component {
         author: '',
         country: ''
     }
-    this.submitBook = this.submitBook.bind(this)
+    this.addBook = this.addBook.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
   
@@ -27,8 +27,9 @@ class BookList extends React.Component {
     })
   }
 
-  submitBook(evt) {
-    evt.preventDefault()
+  addBook(e) {
+    e.preventDefault()
+    e.target.reset()
     const {book_title, author, country} = this.state
     const newBook = {book_title, author, country}
     this.props.dispatch(postBookRequest(newBook))
@@ -38,13 +39,12 @@ class BookList extends React.Component {
   render() {
     return (
         <div className='container'>
-          <form onSubmit={this.sumbitBook}>
-            <label>Add a book{' '} 
-            <input name="booktitle" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
+          <form onSubmit={this.addBook}>
+            Add a book{' '} 
+            <input name="book_title" className="insert-title" type='text' placeholder='I am currently reading...' onChange={this.handleChange}/>
             by
             <input name="author" className="insert-name" type='text' placeholder='Author' onChange={this.handleChange}/>
             <input name="country" className="insert-name" type='text' placeholder='Country' onChange={this.handleChange} />
-            </label>
             <input type="submit" value="Add" />
           </form>
 
