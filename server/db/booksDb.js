@@ -22,7 +22,6 @@ const insertBook = (book) => {
       country: book.country
     })
     .then(id => getBook(id[0]))
-    .catch(err => console.log(err))
 }
 
 module.exports = {

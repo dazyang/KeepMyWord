@@ -13769,7 +13769,7 @@ function getBooks() {
 
 function postBookRequest(newBook) {
   return function (dispatch) {
-    _superagent2.default.post('/api/v1/booklists').then(function (res) {
+    _superagent2.default.post('/api/v1/booklists').send(newBook).then(function (res) {
       dispatch(receiveNewBook(res.body));
     });
   };
