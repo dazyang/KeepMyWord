@@ -18,7 +18,7 @@ on the client-side because no data was being carried through.
 ```  
 From there I shifted my focus to look at the client-side, following the logic and making sure my form is working. Specifically, I looked at my `postBookRequest` function that is being dispatched when user add a book. I was curious what data `newBook` is carrying through in the action, so I console logged to see, but I got nothing. Debugger stopped there and gave me an error message that I don't know how to decipher. I thought then I'll disable `e.preventDefault` in my `handleAddBook` function to see what happens, ran it, and then enabled it again — suddenly this fixed the problem. I can now add books to my database and not null values. Phew...   
 ```
-What prompted me to disable/enable `e.preventDefault` was because when I tried to log `newBook` to see user's data 
+What prompted me to disable/enable `e.preventDefault` was because when I tried to log `newBook` to see if user's data 
 is actually coming through when the form is dispatched, the log disappeared immediately after it popped up, which 
 was odd. It should've stay logged in console for me to exam the data content. (During that short glance, 
 I saw the user data is carried through - not null) Plus, I was getting nothing logging `newBook` from bookActions, 
