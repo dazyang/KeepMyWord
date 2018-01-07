@@ -4,11 +4,22 @@ const router = express.Router()
 const booksDb = require('../db/booksDb')
 
 router.get('/', (req, res) => {
-  // let db = req.app.get('db')
   booksDb.getBooks()
     .then(books => {
       res.json(books)
     })
 })
 
-module.exports = router
+router.post('/', (req, res) => {
+  let {book_title, author, country} = req.body
+  let newBook = { book_title, author, country }
+  booksDb.insertBook(newBook)
+    .then(book => {
+      res.json(book)
+    })
+    .catch((err) => {
+      res.status(500).send(err.message)
+    })
+})
+  module.exports = router
+

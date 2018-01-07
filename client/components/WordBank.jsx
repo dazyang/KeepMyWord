@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getWords } from '../actions/getWords.js'
-import SavedWords from './SavedWords.jsx'
+import WordDatabase from './WordDatabase.jsx'
 
 class WordBank extends React.Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class WordBank extends React.Component {
       <div className='container'>
         {this.props.words.map((word) => {
           return (
-          <SavedWords key={word.id} words={word} />
+          <WordDatabase key={word.id} words={word} />
           )
         })}
       </div>
