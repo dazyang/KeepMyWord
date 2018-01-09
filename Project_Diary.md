@@ -1,4 +1,6 @@
-## Setting my short-term goals and documenting my progresses on the project on a regular basis
+## Documenting progresses and babbles. 
+*The loose and chitchat writing in this diary is intentional.The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
+:::::::  
 **Updated on 4 Jan 1135**  
 My goal this afternoon is to wire up routes to let me add new books into the database. I was looking back some of the old exercises/projects we did in bootcamp, I shall use those to guide me through. This is going to be my main focus for the next couple of hours. (click arrow to see more updates)
 
