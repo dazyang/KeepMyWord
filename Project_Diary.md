@@ -39,4 +39,4 @@ I haven't been able to work much in the last few days because I've been sick, so
   - implementing flipcard function
   - implementing exteral API call  
 
-These should be enough to keep me busy for now! 
+These should be enough to keep me busy for now! I want to get a basic functional product going and deploy it onto Heroku by end of this week, hopefully. 
