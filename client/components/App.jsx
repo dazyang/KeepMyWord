@@ -3,7 +3,7 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 
 import Header from './Header'
 import BookList from './BookList'
-import WordBank from './WordBank'
+import AllWords from './AllWords'
 import { Link } from 'react-router-dom'
 
 
@@ -12,9 +12,8 @@ const App = (props) => {
         <Router>
         <div className='app'>
           <Header />
-          <Route path="/booklists" component={BookList} />
-          <Route path="/wordlists" component={WordBank} />
-          <Link to='/'><button>Return</button></Link>
+          <Route exact path ="/" component ={BookList} />
+          <Route exact path="/allwords" component={AllWords} />
         </div>
       </Router>
     )

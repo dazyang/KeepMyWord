@@ -22,6 +22,7 @@ const insertBook = (book) => {
       country: book.country
     })
     .then(id => getBook(id[0]))
+    // without this it won't work. Need to understand why. 
 }
 
 module.exports = {

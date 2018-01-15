@@ -1,9 +1,16 @@
 body{
-    background-color: rgb(0, 46, 77);
+    /* background-color: rgb(0, 46, 77); */
     font-family: 'Roboto', sans-serif;
     /* text-align: center; */
     /* justify-content: center; */
     /* align-content: center; */
+}
+
+h1{
+    font-size: 48px;
+    font-weight: 400;
+    font-family: 'Bungee Inline';
+    color: rgb(0, 75, 105);
 }
 
 h3{
@@ -49,10 +56,10 @@ img {
     margin: auto;
     color: rgb(0, 75, 105);
     /* margin: auto; */
+}
 
-    font-size: 48px;
-    font-weight: 400;
-    font-family: 'Bungee Inline';
+#notes {
+    font-style: italic;
 }
 
 .navTitles{

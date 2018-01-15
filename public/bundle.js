@@ -13612,9 +13612,9 @@ var _BookList = __webpack_require__(126);
 
 var _BookList2 = _interopRequireDefault(_BookList);
 
-var _WordBank = __webpack_require__(128);
+var _AllWords = __webpack_require__(287);
 
-var _WordBank2 = _interopRequireDefault(_WordBank);
+var _AllWords2 = _interopRequireDefault(_AllWords);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13626,17 +13626,8 @@ var App = function App(props) {
       'div',
       { className: 'app' },
       _react2.default.createElement(_Header2.default, null),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/booklists', component: _BookList2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/wordlists', component: _WordBank2.default }),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/' },
-        _react2.default.createElement(
-          'button',
-          null,
-          'Return'
-        )
-      )
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BookList2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/allwords', component: _AllWords2.default })
     )
   );
 };
@@ -13814,64 +13805,7 @@ function getWords() {
 }
 
 /***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(38);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SavedBooks = function SavedBooks(props) {
-  var book = props.book;
-
-  return _react2.default.createElement(
-    'div',
-    { className: 'book-titles' },
-    _react2.default.createElement(
-      'span',
-      null,
-      book.book_title
-    ),
-    ' ',
-    '/',
-    ' ',
-    _react2.default.createElement(
-      'span',
-      { id: 'author' },
-      book.author
-    ),
-    ' ',
-    _react2.default.createElement(
-      'span',
-      { id: 'country' },
-      book.country
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/' },
-      _react2.default.createElement(
-        'span',
-        { id: 'checkout-vocab' },
-        'See Vocabulary'
-      )
-    )
-  );
-};
-
-exports.default = SavedBooks;
-
-/***/ }),
+/* 125 */,
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13892,9 +13826,9 @@ var _reactRedux = __webpack_require__(40);
 
 var _bookActions = __webpack_require__(123);
 
-var _BookDatabase = __webpack_require__(125);
+var _AllBooks = __webpack_require__(288);
 
-var _BookDatabase2 = _interopRequireDefault(_BookDatabase);
+var _AllBooks2 = _interopRequireDefault(_AllBooks);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13946,7 +13880,7 @@ var BookList = function (_React$Component) {
 
       var newBook = { book_title: book_title, author: author, country: country };
       this.props.dispatch((0, _bookActions.postBookRequest)(newBook));
-      alert('Your book has been submitted');
+      // alert('Your book has been submitted')
     }
   }, {
     key: 'render',
@@ -13966,7 +13900,7 @@ var BookList = function (_React$Component) {
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
         this.props.books.map(function (book, id) {
-          return _react2.default.createElement(_BookDatabase2.default, { key: id, book: book });
+          return _react2.default.createElement(_AllBooks2.default, { key: id, book: book });
         })
       );
     }
@@ -14006,24 +13940,37 @@ var Header = function Header() {
   return _react2.default.createElement(
     'div',
     { id: 'app-title' },
-    'Keep My (Words)',
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/booklists' },
+      { to: '/' },
       _react2.default.createElement(
-        'button',
+        'h1',
         null,
-        'Booklist'
+        'Keep My (Words)'
       )
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/wordlists' },
+      { to: '/' },
       _react2.default.createElement(
         'button',
         null,
-        'Browse vocabulary'
+        'Booklists'
       )
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/allwords' },
+      _react2.default.createElement(
+        'button',
+        null,
+        'Browse all vocabulary'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { id: 'notes' },
+      ' Demo version '
     )
   );
 };
@@ -14031,117 +13978,8 @@ var Header = function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(40);
-
-var _getWords = __webpack_require__(124);
-
-var _WordDatabase = __webpack_require__(129);
-
-var _WordDatabase2 = _interopRequireDefault(_WordDatabase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var WordBank = function (_React$Component) {
-  _inherits(WordBank, _React$Component);
-
-  function WordBank() {
-    _classCallCheck(this, WordBank);
-
-    return _possibleConstructorReturn(this, (WordBank.__proto__ || Object.getPrototypeOf(WordBank)).apply(this, arguments));
-  }
-
-  _createClass(WordBank, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.dispatch((0, _getWords.getWords)());
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'container' },
-        this.props.words.map(function (word) {
-          return _react2.default.createElement(_WordDatabase2.default, { key: word.id, words: word });
-        })
-      );
-    }
-  }]);
-
-  return WordBank;
-}(_react2.default.Component);
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    words: state.words
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(WordBank);
-
-/***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(38);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SavedWords = function SavedWords(props) {
-  var word = props.words;
-  return _react2.default.createElement(
-    'div',
-    { className: 'book-titles' },
-    _react2.default.createElement(
-      'span',
-      null,
-      word.word
-    ),
-    ' ',
-    _react2.default.createElement(
-      'span',
-      { id: 'country' },
-      word.book_id
-    )
-  );
-};
-
-exports.default = SavedWords;
-
-/***/ }),
+/* 128 */,
+/* 129 */,
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30936,6 +30774,196 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 286 */,
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(40);
+
+var _getWords = __webpack_require__(124);
+
+var _SeeVocabs = __webpack_require__(289);
+
+var _SeeVocabs2 = _interopRequireDefault(_SeeVocabs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AllWords = function (_React$Component) {
+  _inherits(AllWords, _React$Component);
+
+  function AllWords() {
+    _classCallCheck(this, AllWords);
+
+    return _possibleConstructorReturn(this, (AllWords.__proto__ || Object.getPrototypeOf(AllWords)).apply(this, arguments));
+  }
+
+  _createClass(AllWords, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.dispatch((0, _getWords.getWords)());
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        this.props.words.map(function (word) {
+          return (
+            //words should display in alphabetical order
+            _react2.default.createElement(
+              'div',
+              { className: 'book-titles' },
+              _react2.default.createElement(
+                'span',
+                null,
+                word.word
+              ),
+              ' ',
+              _react2.default.createElement(
+                'span',
+                { id: 'country' },
+                word.book_id
+              )
+            )
+            // SeeVocabs links to individual word list page, that only display the vocabs from the book.
+            // <SeeVocabs key={word.id} words={word} />
+
+          );
+        })
+      );
+    }
+  }]);
+
+  return AllWords;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    words: state.words
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(AllWords);
+
+/***/ }),
+/* 288 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AllBooks = function AllBooks(props) {
+  var book = props.book;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'book-titles' },
+    _react2.default.createElement(
+      'span',
+      null,
+      book.book_title
+    ),
+    ' ',
+    '/',
+    ' ',
+    _react2.default.createElement(
+      'span',
+      { id: 'author' },
+      book.author
+    ),
+    ' ',
+    _react2.default.createElement(
+      'span',
+      { id: 'country' },
+      book.country
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/author/booktitle' },
+      _react2.default.createElement(
+        'span',
+        { id: 'checkout-vocab' },
+        'See Vocabulary'
+      )
+    )
+  );
+};
+
+exports.default = AllBooks;
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SeeVocabs = function SeeVocabs(props) {
+  var word = props.words;
+  return _react2.default.createElement(
+    'div',
+    { className: 'book-titles' },
+    _react2.default.createElement(
+      'span',
+      null,
+      word.word
+    ),
+    ' ',
+    _react2.default.createElement(
+      'span',
+      { id: 'country' },
+      word.book_id
+    )
+  );
+};
+
+exports.default = SeeVocabs;
 
 /***/ })
 /******/ ]);

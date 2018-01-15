@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-const SavedWords = (props) => {
+const SeeVocabs = (props) => {
   const word = props.words
   return (
     <div className='book-titles'>
@@ -13,4 +13,4 @@ const SavedWords = (props) => {
   )
 }
 
-export default SavedWords
+export default SeeVocabs

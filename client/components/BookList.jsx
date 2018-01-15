@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { getBooks, postBookRequest } from '../actions/bookActions.js'
 
-import BookDatabase from './BookDatabase.jsx'
+import AllBooks from './AllBooks.jsx'
 
 class BookList extends React.Component {
   constructor (props) {
@@ -33,7 +33,7 @@ class BookList extends React.Component {
     const {book_title, author, country} = this.state
     const newBook = {book_title, author, country}
     this.props.dispatch(postBookRequest(newBook))
-    alert('Your book has been submitted')
+    // alert('Your book has been submitted')
   }
 
   render() {
@@ -50,7 +50,7 @@ class BookList extends React.Component {
 
         {this.props.books.map((book, id) => {
           return (
-            <BookDatabase key={id} book={book}/>
+            <AllBooks key={id} book={book}/>
           )
         })}
 
