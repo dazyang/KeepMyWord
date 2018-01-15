@@ -1,4 +1,7 @@
-## Setting my short-term goals and documenting my progresses on the project on a regular basis
+## Documenting progresses and babbles. 
+*The loose and chitchat writing in this diary is intentional.The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
+
+:::::::  
 **Updated on 4 Jan 1135**  
 My goal this afternoon is to wire up routes to let me add new books into the database. I was looking back some of the old exercises/projects we did in bootcamp, I shall use those to guide me through. This is going to be my main focus for the next couple of hours. (click arrow to see more updates)
 
@@ -7,6 +10,7 @@ Some progress made: I can now add 'empty data' into the database but not what I 
 
 > Server-side is receving null, and store is not being updated. Action is not acting properly. 
 
+:::::::  
 **Updated at 6 Jan 1332**   
 Added issue https://github.com/dazyang/KeepMyWords/issues/7 and posted on Slack. — PROBLEM SOLVED!
 
@@ -25,4 +29,14 @@ I saw the user data is carried through - not null) Plus, I was getting nothing l
 which means data evaporated somewhere in the action! This striked me to think something must be wrong there. 
 Hence, I took a wild guess and it fixed it. 
 ```
-Some glitch in the backend file is playing up and not letting me sending my form through properly. :confused: I wonder if the file was messed up a little bit while I was merging `whynot` to `addBook`, because I saw some code that had carried through from `whynot` that shoud've been resolved during mergin. That's a dark secret I'll never be able to find out now... *1606*
+Some glitch in the backend file is playing up and not letting me sending my form through properly. :confused: I wonder if the file was messed up a little bit while I was merging `whynot` to `addBook`, because I saw some code that had carried through from `whynot` that shoud've been resolved during mergin. That's a dark secret I'll never be able to find out now... *1606*  
+
+:::::::  
+**Updated on 14 Jan 1849**  
+I haven't been able to work much in the last few days because I've been sick, some weird stomach bug I caught got me all weak and deflated. Just updating the diary to get into the flow of what my next small steps are for Keep My Words. Next up, I'm going to build up the wordlist page. This will be pretty much be the same steps done for booklist page: adding new words to the list. A big feature of this page, though, is the flipcard function which I have done in the demo version – using React Flipcard library – it's pretty neat. Also, when the flipcard is clicked, it'll make an external API call to WordsAPI, which returns the definition of the word. So, my next goals in summary:  
+  - create wordlist page for each book
+  - add new words to the database (matching book title <-- will need to join table?)
+  - implementing flipcard function
+  - implementing exteral API call  
+
+These should be enough to keep me busy for now! I want to get a basic functional product going and deploy it onto Heroku by end of this week, hopefully. 
