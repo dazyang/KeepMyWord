@@ -13862,7 +13862,7 @@ var AllBooks = function AllBooks(props) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/author/booktitle' },
+      { to: '/author/id/booktitle' },
       _react2.default.createElement(
         'span',
         { id: 'checkout-vocab' },
@@ -13964,6 +13964,8 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(AllWords);
+
+// '/author/id/title' The content data showing on this page, will be returned from two tables. Both populateBooks and populateWords, the two table needs to join by their matched id number, to return the data. One book ---> many words. When adding, however, it's only going to be inserted into the 'populateWords' table. (The book exist in the populateBooks table first.)
 
 /***/ }),
 /* 127 */
