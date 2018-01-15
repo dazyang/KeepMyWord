@@ -10,7 +10,7 @@ const AllBooks = (props) => {
       <span>{book.book_title}</span>{' '}/{' '}
       <span id='author'>{book.author}</span>{' '}
       <span id='country'>{book.country}</span>
-      <Link to='/author/booktitle'><span id='checkout-vocab'>See Vocabulary</span></Link>
+      <Link to='/author/id/booktitle'><span id='checkout-vocab'>See Vocabulary</span></Link>
     </div>
   )
 }
