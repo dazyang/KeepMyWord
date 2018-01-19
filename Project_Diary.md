@@ -39,4 +39,8 @@ I haven't been able to work much in the last few days because I've been sick, so
   - implementing flipcard function
   - implementing exteral API call  
 
-These should be enough to keep me busy for now! I want to get a basic functional product going and deploy it onto Heroku by end of this week, hopefully. 
+These should be enough to keep me busy for now! I want to get a basic functional product going and deploy it onto Heroku by end of this week, hopefully.  
+
+:::::::  
+**Updated on 19 Jan 2153**  
+Been pretty busy with Susan's website the last couple of days, so haven't really had time to work on Keep My Words... I should be able to have some time to focus on this next week. Wanna keep my momentum up up up.
