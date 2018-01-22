@@ -43,4 +43,9 @@ These should be enough to keep me busy for now! I want to get a basic functional
 
 :::::::  
 **Updated on 19 Jan 2153**  
-Been pretty busy with Susan's website the last couple of days, so haven't really had time to work on Keep My Words... I should be able to have some time to focus on this next week. Wanna keep my momentum up up up.
+Been pretty busy with Susan's website the last couple of days, so haven't really had time to work on Keep My Words... I should be able to have some time to focus on this next week. Wanna keep my momentum up up up.  
+
+:::::::  
+**on 22 Jan 2249**  
+Just a few notes for tomorrow:
+
