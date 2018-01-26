@@ -7,6 +7,13 @@ export const receiveWords = (words) => {
   }
 }
 
+export const receiveSingleList = (wordlist) => {
+  return {
+    type: "RECEIVED_SINGLE_LIST",
+    wordlist
+  }
+}
+
 export function getWords () {
   return (dispatch) => {
     request
@@ -20,6 +27,13 @@ export function getWords () {
       })
   }
 }
+
+export function getSingleList () {
+  // this function retrieves saved vocabs under a chosen book title and display them
+}
+
+
+
 
 export function getDefinition(word, callback) {
   request

@@ -1,16 +1,40 @@
+//This component shows list of words from an individual book. 
+
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+// import { getSingleList, getDefinition } from '../actions/wordActions.js'
 
-const SeeVocabs = (props) => {
-  const word = props.words
-  return (
-    <div className='book-titles'>
-      <span>{word.word}</span>{' '}
-      <span id='country'>{word.book_id}</span>
-      
-    </div>
-  )
+class SeeVocabs extends React.Component {
+  // componentDidMount() {
+  //   this.props.dispatch(getSingleList())
+  // }
+  render() {
+    return (
+      <div className='container'>
+        <form>
+          Add a word{' '}
+          <input name="vocab" className="insert-title" type='text' placeholder='Insert word here' />
+          <input type="submit" value="Add" />
+        </form>
+
+        {this.props.wordlist.map((wordlist) => {
+          return (
+            <div className='book-titles'>
+              <span>{word.word}</span>{' '}
+              <span id='country'>{word.book_id}</span>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
 }
 
-export default SeeVocabs
+const mapStateToProps = (state) => {
+  return {
+          wordlist: state.wordlist
+  }
+}
+
+export default connect(mapStateToProps)(SeeVocabs)

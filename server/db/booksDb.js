@@ -13,6 +13,13 @@ const getBook = (id) => {
     .first()
 }
 
+// const getVocabs = (id) => {
+//   const db = defaultConn
+//   return db('populateBooks')
+//     .where('id', id)
+//     .first()
+// }
+
 const insertBook = (book) => {
   const db = defaultConn
   return db('populateBooks')

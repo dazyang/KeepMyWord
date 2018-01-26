@@ -10,6 +10,14 @@ router.get('/', (req, res) => {
     })
 })
 
+// router.get('/', (req, res) => {
+//   booksDb.getVocabs()
+//     .then(books => {
+//       res.json(books)
+//     })
+// })
+
+
 router.post('/', (req, res) => {
   let {book_title, author, country} = req.body
   let newBook = { book_title, author, country }
