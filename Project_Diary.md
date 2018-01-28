@@ -48,7 +48,8 @@ Been pretty busy with Susan's website the last couple of days, so haven't really
 :::::::  
 **on 26 Jan 1432**  
 Finally have time today to work on this project, though, I can see my concentration fading still because of a couple of things going on in the background... Anyway, gonna document tiny steps here to hold my concentration:  
-- first up: create wordlist page for each book, but start one first. < almost there!
+- first up: create wordlist page for each book, but start one first. < almost there!  
+
 :::::::  
 **27 Jan 1703**  
 
