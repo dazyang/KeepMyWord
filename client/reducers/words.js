@@ -3,7 +3,7 @@ function words (state = [], action) {
     case "RECEIVED_WORDS":
     return action.words
     case "RECEIVED_WORD_LIST":
-    return action.wordlist
+    return [...action.wordlist]
     default:
     return state
   }

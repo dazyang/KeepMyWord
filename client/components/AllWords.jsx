@@ -18,8 +18,6 @@ class AllWords extends React.Component {
               <span>{word.word}</span>{' '}
               <span id='country'>{word.book_id}</span>
             </div>
-//=== SeeVocabs links to individual word list page, that only display the vocabs from the book. ===//
-          // <SeeVocabs key={word.id} words={word} />
           )
         })}
       </div>

@@ -14,6 +14,8 @@ export const receiveWordList = (wordlist) => {
   }
 }
 
+// console.log(wordlist)
+
 export function getAllWords () {
   return (dispatch) => {
     request

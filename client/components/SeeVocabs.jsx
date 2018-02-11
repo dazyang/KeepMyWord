@@ -10,6 +10,8 @@ class SeeVocabs extends React.Component {
     this.props.dispatch(getVocabsReq(this.props.books.id))
   }
   render() {
+    console.log(this.props.books)
+    console.log(this.props.words)
     return (
       <div className='container'>
         <form>
@@ -21,7 +23,7 @@ class SeeVocabs extends React.Component {
         {this.props.words.map((word) => {
           return (
             <div className='book-titles'>
-              <span>{word.word}</span>{' '}
+              <span>{word}</span>{' '}
               {/* <span id='country'>{wordlist.book_id}</span> */}
             </div>
           )
@@ -30,6 +32,13 @@ class SeeVocabs extends React.Component {
     )
   }
 }
+
+// SeeVocabs.defaultProps = {
+//   words: {
+//     id: '',
+//     word: ''
+//   }
+// }
 
 const mapStateToProps = (state) => {
   return {
