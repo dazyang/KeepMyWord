@@ -20,7 +20,7 @@ export const receiveNewBook = (newBook) => {
   }
 }
 
-export function getBooks () {
+export function getAllBooks () {
   return (dispatch) => {
     request
       .get('/api/v1/booklists')

@@ -3,12 +3,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-// import { getSingleList, getDefinition } from '../actions/wordActions.js'
+import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
 
 class SeeVocabs extends React.Component {
-  // componentDidMount() {
-  //   this.props.dispatch(getSingleList())
-  // }
+  componentDidMount() {
+    this.props.dispatch(getVocabsReq())
+  }
   render() {
     return (
       <div className='container'>

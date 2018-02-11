@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getBooks, postBookRequest } from '../actions/bookActions.js'
+import { getAllBooks, postBookRequest } from '../actions/bookActions.js'
 
 import AllBooks from './AllBooks.jsx'
 
@@ -18,7 +18,7 @@ class BookList extends React.Component {
   }
   
   componentDidMount() {
-    this.props.dispatch(getBooks())
+    this.props.dispatch(getAllBooks())
   }
 
   handleChange(evt) {

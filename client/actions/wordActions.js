@@ -7,14 +7,14 @@ export const receiveWords = (words) => {
   }
 }
 
-export const receiveSingleList = (wordlist) => {
+export const receiveWordList = (wordlist) => {
   return {
-    type: "RECEIVED_SINGLE_LIST",
+    type: "RECEIVED_WORD_LIST",
     wordlist
   }
 }
 
-export function getWords () {
+export function getAllWords () {
   return (dispatch) => {
     request
       .get('api/v1/wordlists')
@@ -28,12 +28,15 @@ export function getWords () {
   }
 }
 
-export function getSingleList () {
-  // this function retrieves saved vocabs under a chosen book title and display them
+export function getVocabsReq (bookId) {
+  return dispatch => {
+    request
+      .get('words/' + bookId)
+      .then(res => {
+        dispatch(receiveWordList(res.body))
+      })
+  }
 }
-
-
-
 
 export function getDefinition(word, callback) {
   request

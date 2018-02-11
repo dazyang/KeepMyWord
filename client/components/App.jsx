@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
 import Header from './Header'
 import BookList from './BookList'
 import AllWords from './AllWords'
-import { Link } from 'react-router-dom'
+import SeeVocabs from './SeeVocabs'
 
 
 const App = (props) => {
@@ -14,6 +15,7 @@ const App = (props) => {
           <Header />
           <Route exact path ="/" component ={BookList} />
           <Route exact path="/allwords" component={AllWords} />
+          <Route exact path="/author/id/booktitle" component={SeeVocabs} />
         </div>
       </Router>
     )
