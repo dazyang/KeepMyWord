@@ -34,7 +34,7 @@ Some glitch in the backend file is playing up and not letting me sending my form
 :::::::  
 **Updated on 14 Jan 1849**  
 I haven't been able to work much in the last few days because I've been sick, some weird stomach bug I caught got me all weak and deflated. Just updating the diary to get into the flow of what my next small steps are for Keep My Words. Next up, I'm going to build up the wordlist page. This will be pretty much be the same steps done for booklist page: adding new words to the list. A big feature of this page, though, is the flipcard function which I have done in the demo version – using React Flipcard library – it's pretty neat. Also, when the flipcard is clicked, it'll make an external API call to WordsAPI, which returns the definition of the word. So, my next goals in summary:  
-  - create wordlist page for each book
+  - create wordlist page for each book (SeeVocab.jsx)
   - add new words to the database (matching book title <-- will need to join table?)
   - implementing flipcard function
   - implementing exteral API call  
