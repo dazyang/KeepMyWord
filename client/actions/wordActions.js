@@ -17,7 +17,7 @@ export const receiveWordList = (wordlist) => {
 export function getAllWords () {
   return (dispatch) => {
     request
-      .get('api/v1/wordlists')
+      .get('/api/v1/wordlists')
       .end((err, res) => {
         if (err) {
           console.error(err.message)
@@ -31,8 +31,12 @@ export function getAllWords () {
 export function getVocabsReq (bookId) {
   return dispatch => {
     request
-      .get('words/' + bookId)
-      .then(res => {
+      .get(`/api/v1/wordlists/${bookId}/vocabs`)
+      .end((err, res) => {
+        if (err) {
+          console.error(err.message)
+          return
+        }
         dispatch(receiveWordList(res.body))
       })
   }

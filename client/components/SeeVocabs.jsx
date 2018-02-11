@@ -7,22 +7,22 @@ import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
 
 class SeeVocabs extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getVocabsReq())
+    this.props.dispatch(getVocabsReq(this.props.books.id))
   }
   render() {
     return (
       <div className='container'>
         <form>
           Add a word{' '}
-          <input name="vocab" className="insert-title" type='text' placeholder='Insert word here' />
+          <input name="vocab" className="insert-title" type='text' placeholder='Insert new word here' />
           <input type="submit" value="Add" />
         </form>
 
-        {this.props.wordlist.map((wordlist) => {
+        {this.props.words.map((word) => {
           return (
             <div className='book-titles'>
               <span>{word.word}</span>{' '}
-              <span id='country'>{word.book_id}</span>
+              {/* <span id='country'>{wordlist.book_id}</span> */}
             </div>
           )
         })}
@@ -33,7 +33,8 @@ class SeeVocabs extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-          wordlist: state.wordlist
+    books: state.books,
+    words: state.words
   }
 }
 

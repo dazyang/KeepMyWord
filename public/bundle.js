@@ -7592,7 +7592,7 @@ var receiveWordList = exports.receiveWordList = function receiveWordList(wordlis
 
 function getAllWords() {
   return function (dispatch) {
-    _superagent2.default.get('api/v1/wordlists').end(function (err, res) {
+    _superagent2.default.get('/api/v1/wordlists').end(function (err, res) {
       if (err) {
         console.error(err.message);
         return;
@@ -7604,7 +7604,11 @@ function getAllWords() {
 
 function getVocabsReq(bookId) {
   return function (dispatch) {
-    _superagent2.default.get('words/' + bookId).then(function (res) {
+    _superagent2.default.get("/api/v1/wordlists/" + bookId + "/vocabs").end(function (err, res) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
       dispatch(receiveWordList(res.body));
     });
   };
@@ -7662,7 +7666,7 @@ var SeeVocabs = function (_React$Component) {
   _createClass(SeeVocabs, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.dispatch((0, _wordActions.getVocabsReq)());
+      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.books.id));
     }
   }, {
     key: 'render',
@@ -7675,10 +7679,10 @@ var SeeVocabs = function (_React$Component) {
           null,
           'Add a word',
           ' ',
-          _react2.default.createElement('input', { name: 'vocab', className: 'insert-title', type: 'text', placeholder: 'Insert word here' }),
+          _react2.default.createElement('input', { name: 'vocab', className: 'insert-title', type: 'text', placeholder: 'Insert new word here' }),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
         ),
-        this.props.wordlist.map(function (wordlist) {
+        this.props.words.map(function (word) {
           return _react2.default.createElement(
             'div',
             { className: 'book-titles' },
@@ -7687,12 +7691,7 @@ var SeeVocabs = function (_React$Component) {
               null,
               word.word
             ),
-            ' ',
-            _react2.default.createElement(
-              'span',
-              { id: 'country' },
-              word.book_id
-            )
+            ' '
           );
         })
       );
@@ -7704,7 +7703,8 @@ var SeeVocabs = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    wordlist: state.wordlist
+    books: state.books,
+    words: state.words
   };
 };
 
@@ -13787,7 +13787,7 @@ var App = function App(props) {
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BookList2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/allwords', component: _AllWords2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/author/id/booktitle', component: _SeeVocabs2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/books/:bookId/vocabs', component: _SeeVocabs2.default })
     )
   );
 };
@@ -14005,10 +14005,6 @@ var _reactRedux = __webpack_require__(30);
 
 var _wordActions = __webpack_require__(68);
 
-var _SeeVocabs = __webpack_require__(69);
-
-var _SeeVocabs2 = _interopRequireDefault(_SeeVocabs);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14016,6 +14012,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import SeeVocabs from './SeeVocabs.jsx'
 
 var AllWords = function (_React$Component) {
   _inherits(AllWords, _React$Component);

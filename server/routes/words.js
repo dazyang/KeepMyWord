@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/words/:bookId', (req, res) => {
+router.get('/:bookId/vocabs', (req, res) => {
   wordsDb.getVocabsByBook(req.params.bookId)
   .then(wordlist => res.json(wordlist))
 })

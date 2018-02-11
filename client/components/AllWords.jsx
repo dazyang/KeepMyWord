@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getAllWords, getDefinition } from '../actions/wordActions.js'
-import SeeVocabs from './SeeVocabs.jsx'
+// import SeeVocabs from './SeeVocabs.jsx'
 
 class AllWords extends React.Component {
   componentDidMount() {
