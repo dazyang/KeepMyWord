@@ -54,4 +54,6 @@ Finally have time today to work on this project, though, I can see my concentrat
 **on 10 Feb 2037**  
 It's been a long time again... Who would've known the last few weeks was gonna be so busy. Was good time though. Now back to the other side of the world, I need to make up the exercises I missed out. Spent a few good hours today to catch up on KeepMyWords. Had a good mental workout! But I'm stuck again after a couple of achievements. Things I've acheived today is joined two tables together and it is returning the joined data I need for the SeeVocabs component. Yay! Although, the store is not receiving data from the server side... What can it be? It's a mystery at the moment. I wonder if it is because it's returning a phantom table (joined table) so it's not recoginising what is being returned? Maybe I need to set up `defaultProps` at the bottom? I'll need to look into some previous examples again. Hopefully it won't take too long for me to figure this one out. Will keep going tomorrow, gonna rest now. 
  
+:::::::  
+**on 13 Feb 1302**  
 
