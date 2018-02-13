@@ -56,4 +56,7 @@ It's been a long time again... Who would've known the last few weeks was gonna b
  
 :::::::  
 **on 13 Feb 1302**  
-Ha! Looks like I know where the problem is now. The book id(parameter) coming from `getVocabsReq(this.props.books.id)` is undefined — good debugging! No wonder why server is not able to return the correct data.   
+Ha! Looks like I know where the problem is now. The book id(parameter) coming from `getVocabsReq(this.props.books.id)` is undefined — good debugging! No wonder why server is not able to return the correct data.  
+
+Question here:  
+**How do I retreive a particular id number from the returning joined data?** At the moment, when SeeVocabs is loaded, componentDidMount will retreive all books from the database; maybe what I need is to write a funtion that only return the id of the book I want, and then pass that id to `getVocabsReq()`.

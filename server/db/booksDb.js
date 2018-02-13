@@ -3,7 +3,6 @@ const defaultConn = require('./connection')
 const getBooks = () => {
   const db = defaultConn
   return db('populateBooks')
-    .select() 
 }
 
 const getBook = (id) => {
@@ -12,13 +11,6 @@ const getBook = (id) => {
     .where('id', id)
     .first()
 }
-
-// const getVocabs = (id) => {
-//   const db = defaultConn
-//   return db('populateBooks')
-//     .where('id', id)
-//     .first()
-// }
 
 const insertBook = (book) => {
   const db = defaultConn

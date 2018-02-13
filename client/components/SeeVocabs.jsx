@@ -3,17 +3,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getAllBooks } from '../actions/bookActions.js'
+// import { singleBookReq } from '../actions/bookActions.js'
 import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
+
+// import WordlistByBook from './WordlistByBook'
 
 class SeeVocabs extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getAllBooks())
-    this.props.dispatch(getVocabsReq(this.props.books.id))
+    // this.props.dispatch(singleBookReq())
+    this.props.dispatch(getVocabsReq(this.props.book.id))
   }
   render() {
-    console.log(this.props.books)
-    console.log(this.props.words)
     return (
       <div className='container'>
         <form>
@@ -21,30 +21,23 @@ class SeeVocabs extends React.Component {
           <input name="vocab" className="insert-title" type='text' placeholder='Insert new word here' />
           <input type="submit" value="Add" />
         </form>
-
-        {this.props.words.map((word) => {
-          return (
-            <div className='book-titles'>
-              <span>{word}</span>{' '}
-              {/* <span id='country'>{wordlist.book_id}</span> */}
-            </div>
-          )
-        })}
+        
+       {/* <WordlistByBook bookId={id}/> */}
       </div>
     )
   }
 }
 
-// SeeVocabs.defaultProps = {
-//   words: {
-//     id: '',
-//     word: ''
-//   }
-// }
+SeeVocabs.defaultProps = {
+  book: {
+    id: 1,
+    word: ''
+  }
+}
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    books: state.books,
+    book: state.books.find(book => id === book.id),
     words: state.words
   }
 }

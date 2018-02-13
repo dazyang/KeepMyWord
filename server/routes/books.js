@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
 })
 
 // router.get('/', (req, res) => {
-//   booksDb.getVocabs()
-//     .then(books => {
-//       res.json(books)
+//   booksDb.getBook()
+//     .then(book => {
+//       res.json(book)
 //     })
 // })
 

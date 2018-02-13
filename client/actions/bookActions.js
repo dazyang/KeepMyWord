@@ -7,6 +7,13 @@ export const receiveBooks = (books) => {
   }
 }
 
+export const receiveSingleBook = (book) => {
+  return {
+    type: "RECEIVED_SINGLE_BOOK",
+    singleBook
+  }
+}
+
 export const addBook = () => {
   return {
     type: "ADD_BOOK"
@@ -33,6 +40,20 @@ export function getAllBooks () {
       })
   }
 }
+
+// export function singleBookReq () {
+//   return (distpatch) => {
+//     request
+//     .get()
+//     .end((err, res) => {
+//       if (err) {
+//         console.error(err.message)
+//         return
+//       }
+//       dispatch(receiveSingleBook(res.body))
+//     })
+//   }
+// }
 
 
 export function postBookRequest (newBook) {
