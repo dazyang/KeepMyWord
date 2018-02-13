@@ -1,5 +1,5 @@
 ## Documenting progresses and babbles. 
-*The loose and chitchat writing in this diary is intentional.The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
+*The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
 
 :::::::  
 **Updated on 4 Jan 1135**  
