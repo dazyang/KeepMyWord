@@ -3,17 +3,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-// import { singleBookReq } from '../actions/bookActions.js'
+import { getAllBooks} from '../actions/bookActions.js'
 import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
 
 // import WordlistByBook from './WordlistByBook'
 
 class SeeVocabs extends React.Component {
   componentDidMount() {
-    // this.props.dispatch(singleBookReq())
-    this.props.dispatch(getVocabsReq(this.props.book.id))
+    this.props.dispatch(getAllBooks())
+    this.props.dispatch(getVocabsReq(this.props.books.id))
   }
   render() {
+    console.log(this.props.books)
     return (
       <div className='container'>
         <form>
@@ -28,16 +29,19 @@ class SeeVocabs extends React.Component {
   }
 }
 
-SeeVocabs.defaultProps = {
-  book: {
-    id: 1,
-    word: ''
-  }
-}
+// SeeVocabs.defaultProps = {
+//   book: {
+//     id: 1,
+//     word: ''
+//   }
+// }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
+  // const id = Number(ownProps.match.params.id)
+  // console.log(id)
   return {
-    book: state.books.find(book => id === book.id),
+    // book: state.books.filter(book => id === book.id),
+    books: state.books,
     words: state.words
   }
 }

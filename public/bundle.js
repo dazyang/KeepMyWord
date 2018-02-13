@@ -7617,7 +7617,7 @@ function getAllBooks() {
 // export function singleBookReq () {
 //   return (distpatch) => {
 //     request
-//     .get()
+//     .get('/api/v1/booklists')
 //     .end((err, res) => {
 //       if (err) {
 //         console.error(err.message)
@@ -14202,6 +14202,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(30);
 
+var _bookActions = __webpack_require__(68);
+
 var _wordActions = __webpack_require__(69);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14211,9 +14213,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //This component shows list of words from an individual book. 
-
-// import { singleBookReq } from '../actions/bookActions.js'
-
 
 // import WordlistByBook from './WordlistByBook'
 
@@ -14229,12 +14228,13 @@ var SeeVocabs = function (_React$Component) {
   _createClass(SeeVocabs, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      // this.props.dispatch(singleBookReq())
-      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.book.id));
+      this.props.dispatch((0, _bookActions.getAllBooks)());
+      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.books.id));
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.props.books);
       return _react2.default.createElement(
         'div',
         { className: 'container' },
@@ -14253,18 +14253,19 @@ var SeeVocabs = function (_React$Component) {
   return SeeVocabs;
 }(_react2.default.Component);
 
-SeeVocabs.defaultProps = {
-  book: {
-    id: 1,
-    word: ''
-  }
-};
+// SeeVocabs.defaultProps = {
+//   book: {
+//     id: 1,
+//     word: ''
+//   }
+// }
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
+  // const id = Number(ownProps.match.params.id)
+  // console.log(id)
   return {
-    book: state.books.find(function (book) {
-      return id === book.id;
-    }),
+    // book: state.books.filter(book => id === book.id),
+    books: state.books,
     words: state.words
   };
 };

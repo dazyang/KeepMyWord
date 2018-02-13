@@ -44,7 +44,7 @@ export function getAllBooks () {
 // export function singleBookReq () {
 //   return (distpatch) => {
 //     request
-//     .get()
+//     .get('/api/v1/booklists')
 //     .end((err, res) => {
 //       if (err) {
 //         console.error(err.message)
