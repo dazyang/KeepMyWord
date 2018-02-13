@@ -8,13 +8,13 @@ export const receiveWords = (words) => {
 }
 
 export const receiveWordList = (wordlist) => {
+  console.log(wordlist)
   return {
     type: "RECEIVED_WORD_LIST",
     wordlist
   }
 }
 
-// console.log(wordlist)
 
 export function getAllWords () {
   return (dispatch) => {
@@ -31,6 +31,7 @@ export function getAllWords () {
 }
 
 export function getVocabsReq (bookId) {
+  console.log(bookId)//undefined!
   return dispatch => {
     request
       .get(`/api/v1/wordlists/${bookId}/vocabs`)

@@ -7584,13 +7584,12 @@ var receiveWords = exports.receiveWords = function receiveWords(words) {
 };
 
 var receiveWordList = exports.receiveWordList = function receiveWordList(wordlist) {
+  console.log(wordlist);
   return {
     type: "RECEIVED_WORD_LIST",
     wordlist: wordlist
   };
 };
-
-// console.log(wordlist)
 
 function getAllWords() {
   return function (dispatch) {
@@ -7605,6 +7604,7 @@ function getAllWords() {
 }
 
 function getVocabsReq(bookId) {
+  console.log(bookId); //undefined!
   return function (dispatch) {
     _superagent2.default.get("/api/v1/wordlists/" + bookId + "/vocabs").end(function (err, res) {
       if (err) {
@@ -14180,6 +14180,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(30);
 
+var _bookActions = __webpack_require__(124);
+
 var _wordActions = __webpack_require__(68);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14202,6 +14204,7 @@ var SeeVocabs = function (_React$Component) {
   _createClass(SeeVocabs, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.props.dispatch((0, _bookActions.getAllBooks)());
       this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.books.id));
     }
   }, {
@@ -14366,9 +14369,6 @@ exports.default = greetings;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function words() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
@@ -14377,7 +14377,7 @@ function words() {
     case "RECEIVED_WORDS":
       return action.words;
     case "RECEIVED_WORD_LIST":
-      return [].concat(_toConsumableArray(action.wordlist));
+      return action.wordlist;
     default:
       return state;
   }

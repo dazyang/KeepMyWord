@@ -3,10 +3,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { getAllBooks } from '../actions/bookActions.js'
 import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
 
 class SeeVocabs extends React.Component {
   componentDidMount() {
+    this.props.dispatch(getAllBooks())
     this.props.dispatch(getVocabsReq(this.props.books.id))
   }
   render() {
