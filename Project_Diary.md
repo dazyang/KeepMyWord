@@ -1,5 +1,5 @@
 ## Documenting progresses and babbles. 
-*The loose and chitchat writing in this diary is intentional.The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
+*The purpose of this dairy is to help me setting daily goals and to launch me into a creative flow. Any important issues/progress will be highlighted in a different style otherwise.*  
 
 :::::::  
 **Updated on 4 Jan 1135**  
@@ -59,4 +59,8 @@ It's been a long time again... Who would've known the last few weeks was gonna b
 Ha! Looks like I know where the problem is now. The book id(parameter) coming from `getVocabsReq(this.props.books.id)` is undefined — good debugging! No wonder why server is not able to return the correct data.  
 
 Question here:  
-**How do I retreive a particular id number from the returning joined data?** At the moment, when SeeVocabs is loaded, componentDidMount will retreive all books from the database; maybe what I need is to write a funtion that only return the id of the book I want, and then pass that id to `getVocabsReq()`.
+**How do I retreive and match a particular params id number from the returning data?** At the moment, when SeeVocabs is loaded, componentDidMount will retreive all books from the database; maybe what I need is to write a function that only return the id of the book I want, and then pass that id to `getVocabsReq()`.  
+**Two Options:**  
+1 Currently `getAllBooks` is returning a big data object which contains all the books in the database. Going with this function, what I need to do is to write a function that pick out(filter?/reduce?) the book id that matches with `/books/:id/vocbs`. 
+
+2 Anthoer way is to write a single book request `singleBookReq` function in `bookActions` to talk to the server to only return the particular book being loaded. This way the filter?/reduce? function happens in the back end. (this way may be more cumbersome?)
