@@ -13786,7 +13786,7 @@ var App = function App(props) {
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BookList2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/allwords', component: _AllWords2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/books/:bookId/vocabs', component: _SeeVocabs2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/books/:id/vocabs', component: _SeeVocabs2.default })
     )
   );
 };
@@ -14229,12 +14229,12 @@ var SeeVocabs = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.dispatch((0, _bookActions.getAllBooks)());
-      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.books.id));
+      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.book.id));
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props.books);
+      // console.log(this.props.book.id)
       return _react2.default.createElement(
         'div',
         { className: 'container' },
@@ -14245,7 +14245,19 @@ var SeeVocabs = function (_React$Component) {
           ' ',
           _react2.default.createElement('input', { name: 'vocab', className: 'insert-title', type: 'text', placeholder: 'Insert new word here' }),
           _react2.default.createElement('input', { type: 'submit', value: 'Add' })
-        )
+        ),
+        this.props.words.map(function (word, id) {
+          return _react2.default.createElement(
+            'div',
+            { key: id, className: 'book-titles' },
+            _react2.default.createElement(
+              'span',
+              null,
+              word.word
+            ),
+            ' '
+          );
+        })
       );
     }
   }]);
@@ -14253,19 +14265,21 @@ var SeeVocabs = function (_React$Component) {
   return SeeVocabs;
 }(_react2.default.Component);
 
-// SeeVocabs.defaultProps = {
-//   book: {
-//     id: 1,
-//     word: ''
-//   }
-// }
+SeeVocabs.defaultProps = {
+  book: {
+    author: " ",
+    book_title: " ",
+    country: " ",
+    id: 1
+  }
+};
 
-var mapStateToProps = function mapStateToProps(state) {
-  // const id = Number(ownProps.match.params.id)
-  // console.log(id)
+var mapStateToProps = function mapStateToProps(state, props) {
   return {
-    // book: state.books.filter(book => id === book.id),
-    books: state.books,
+    book: state.books.find(function (book) {
+      return book.id == props.match.params.id;
+    }),
+    // books: state.books,
     words: state.words
   };
 };

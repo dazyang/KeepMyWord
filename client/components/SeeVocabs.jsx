@@ -11,10 +11,10 @@ import { getVocabsReq, getDefinition } from '../actions/wordActions.js'
 class SeeVocabs extends React.Component {
   componentDidMount() {
     this.props.dispatch(getAllBooks())
-    this.props.dispatch(getVocabsReq(this.props.books.id))
+    this.props.dispatch(getVocabsReq(this.props.book.id))
   }
   render() {
-    console.log(this.props.books)
+    // console.log(this.props.book.id)
     return (
       <div className='container'>
         <form>
@@ -23,25 +23,32 @@ class SeeVocabs extends React.Component {
           <input type="submit" value="Add" />
         </form>
         
-       {/* <WordlistByBook bookId={id}/> */}
+      {/* <WordlistByBook bookId={id}/> */} 
+       {this.props.words.map((word, id) => {
+         return (
+           <div key={id} className='book-titles'>
+              <span>{word.word}</span>{' '}
+            </div>
+          )
+       })}
       </div>
     )
   }
 }
 
-// SeeVocabs.defaultProps = {
-//   book: {
-//     id: 1,
-//     word: ''
-//   }
-// }
+SeeVocabs.defaultProps = {
+  book: {
+  author: " ",
+  book_title: " ",
+  country: " ",
+  id: 1
+  }
+}
 
-const mapStateToProps = (state) => {
-  // const id = Number(ownProps.match.params.id)
-  // console.log(id)
+const mapStateToProps = (state, props) => {
   return {
-    // book: state.books.filter(book => id === book.id),
-    books: state.books,
+    book: state.books.find(book => book.id == props.match.params.id),
+    // books: state.books,
     words: state.words
   }
 }

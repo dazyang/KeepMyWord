@@ -1,10 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
 class WordlistByBook extends React.Component {
-  componentWillReceiveProps() {
-    // this.props.dispatch(getVocabsReq(props.books.id))
+  componentDidMount() {
+    this.props.dispatch(getVocabsReq(props.books.id))
   }
   render() {
     return (
