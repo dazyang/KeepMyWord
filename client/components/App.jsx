@@ -15,7 +15,7 @@ const App = (props) => {
           <Header />
           <Route exact path ="/" component ={BookList} />
           <Route exact path="/allwords" component={AllWords} />
-          <Route exact path="/books/:id/vocabs" component={SeeVocabs} />
+          <Route exact path="/books/:bookId/vocabs" component={SeeVocabs} />
         </div>
       </Router>
     )

@@ -31,7 +31,7 @@ export function getAllWords () {
 }
 
 export function getVocabsReq (bookId) {
-  console.log(bookId)//undefined!
+  console.log(bookId)
   return dispatch => {
     request
       .get(`/api/v1/wordlists/${bookId}/vocabs`)

@@ -7,12 +7,6 @@ export const receiveBooks = (books) => {
   }
 }
 
-export const receiveSingleBook = (book) => {
-  return {
-    type: "RECEIVED_SINGLE_BOOK",
-    singleBook
-  }
-}
 
 export const addBook = () => {
   return {
@@ -24,6 +18,13 @@ export const receiveNewBook = (newBook) => {
   return {
     type: "RECEIVED_NEW_BOOK",
     newBook
+  }
+}
+
+export const receiveSingleBook = (singleBook) => {
+  return {
+    type: "RECEIVED_SINGLE_BOOK",
+    singleBook
   }
 }
 
@@ -41,19 +42,19 @@ export function getAllBooks () {
   }
 }
 
-// export function singleBookReq () {
-//   return (distpatch) => {
-//     request
-//     .get('/api/v1/booklists')
-//     .end((err, res) => {
-//       if (err) {
-//         console.error(err.message)
-//         return
-//       }
-//       dispatch(receiveSingleBook(res.body))
-//     })
-//   }
-// }
+export function singleBookReq (bookId) {
+  return (dispatch) => {
+    request
+      .get(`api/v1/booklists/${bookId}/vocabs`)
+      .end((err, res) => {
+      if (err) {
+        console.error(err.message)
+        return
+      }
+      dispatch(receiveSingleBook(res.body))
+    })
+  }
+}
 
 
 export function postBookRequest (newBook) {

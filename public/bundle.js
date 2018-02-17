@@ -7565,8 +7565,9 @@ module.exports = lowPriorityWarning;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.receiveNewBook = exports.addBook = exports.receiveSingleBook = exports.receiveBooks = undefined;
+exports.receiveSingleBook = exports.receiveNewBook = exports.addBook = exports.receiveBooks = undefined;
 exports.getAllBooks = getAllBooks;
+exports.singleBookReq = singleBookReq;
 exports.postBookRequest = postBookRequest;
 
 var _superagent = __webpack_require__(117);
@@ -7579,13 +7580,6 @@ var receiveBooks = exports.receiveBooks = function receiveBooks(books) {
   return {
     type: "RECEIVED_BOOKS",
     books: books
-  };
-};
-
-var receiveSingleBook = exports.receiveSingleBook = function receiveSingleBook(book) {
-  return {
-    type: "RECEIVED_SINGLE_BOOK",
-    singleBook: singleBook
   };
 };
 
@@ -7602,6 +7596,13 @@ var receiveNewBook = exports.receiveNewBook = function receiveNewBook(newBook) {
   };
 };
 
+var receiveSingleBook = exports.receiveSingleBook = function receiveSingleBook(singleBook) {
+  return {
+    type: "RECEIVED_SINGLE_BOOK",
+    singleBook: singleBook
+  };
+};
+
 function getAllBooks() {
   return function (dispatch) {
     _superagent2.default.get('/api/v1/booklists').end(function (err, res) {
@@ -7614,20 +7615,17 @@ function getAllBooks() {
   };
 }
 
-// export function singleBookReq () {
-//   return (distpatch) => {
-//     request
-//     .get('/api/v1/booklists')
-//     .end((err, res) => {
-//       if (err) {
-//         console.error(err.message)
-//         return
-//       }
-//       dispatch(receiveSingleBook(res.body))
-//     })
-//   }
-// }
-
+function singleBookReq(bookId) {
+  return function (dispatch) {
+    _superagent2.default.get("api/v1/booklists/" + bookId + "/vocabs").end(function (err, res) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      dispatch(receiveSingleBook(res.body));
+    });
+  };
+}
 
 function postBookRequest(newBook) {
   return function (dispatch) {
@@ -7686,7 +7684,7 @@ function getAllWords() {
 }
 
 function getVocabsReq(bookId) {
-  console.log(bookId); //undefined!
+  console.log(bookId);
   return function (dispatch) {
     _superagent2.default.get("/api/v1/wordlists/" + bookId + "/vocabs").end(function (err, res) {
       if (err) {
@@ -13786,7 +13784,7 @@ var App = function App(props) {
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BookList2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/allwords', component: _AllWords2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/books/:id/vocabs', component: _SeeVocabs2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/books/:bookId/vocabs', component: _SeeVocabs2.default })
     )
   );
 };
@@ -14228,13 +14226,14 @@ var SeeVocabs = function (_React$Component) {
   _createClass(SeeVocabs, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.dispatch((0, _bookActions.getAllBooks)());
-      this.props.dispatch((0, _wordActions.getVocabsReq)(this.props.book.id));
+      // this.props.dispatch(getAllBooks())
+      this.props.dispatch((0, _bookActions.singleBookReq)());
+      // this.props.dispatch(getVocabsReq(this.props.books.id))
     }
   }, {
     key: 'render',
     value: function render() {
-      // console.log(this.props.book.id)
+      console.log(this.props.books);
       return _react2.default.createElement(
         'div',
         { className: 'container' },
@@ -14265,21 +14264,18 @@ var SeeVocabs = function (_React$Component) {
   return SeeVocabs;
 }(_react2.default.Component);
 
-SeeVocabs.defaultProps = {
-  book: {
-    author: " ",
-    book_title: " ",
-    country: " ",
-    id: 1
-  }
-};
+// SeeVocabs.defaultProps = {
+//   book: {
+//   id: 0
+//   }
+// }
 
 var mapStateToProps = function mapStateToProps(state, props) {
+  var id = props.match.params.bookId;
+  console.log(id);
   return {
-    book: state.books.find(function (book) {
-      return book.id == props.match.params.id;
-    }),
-    // books: state.books,
+    // book: state.books.find(book => book.id == id),
+    books: state.books,
     words: state.words
   };
 };
@@ -14349,8 +14345,8 @@ function books() {
   switch (action.type) {
     case "RECEIVED_BOOKS":
       return action.books;
-    // case "RECEIVED_SINGLE_BOOK":
-    //   return action.singleBook
+    case "RECEIVED_SINGLE_BOOK":
+      return action.singleBook;
     case "ADD_BOOK":
       return [].concat(_toConsumableArray(action.books));
     case "RECEIVED_NEW_BOOK":

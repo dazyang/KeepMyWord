@@ -12,11 +12,11 @@ const getBook = (id) => {
     .first()
 }
 
-const getSingleBook = (id) => {
+const getSingleBook = (bookId) => {
   const db = defaultConn
   return db('populateBooks')
-    .where('id', id)
-    .first()
+    .where('id', bookId)
+    .select('id')
 }
 
 const insertBook = (book) => {
@@ -33,7 +33,8 @@ const insertBook = (book) => {
 
 module.exports = {
   getBooks,
-  insertBook
+  insertBook,
+  getSingleBook
 }
 
 

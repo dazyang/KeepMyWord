@@ -10,12 +10,22 @@ router.get('/', (req, res) => {
     })
 })
 
-// router.get('/', (req, res) => {
-//   booksDb.getBook()
-//     .then(book => {
-//       res.json(book)
-//     })
-// })
+router.get('/', (req, res) => {
+  booksDb.getBook()
+    .then(book => {
+      res.json(book)
+    })
+})
+
+router.get('/:bookId/vocabs', (req, res) => {
+  booksDb.getSingleBook(req.params.bookId)
+    .then(book => {
+      res.json(book)
+    })
+    // .catch(() => {
+    //   res.status(500).end()
+    // })
+})
 
 
 router.post('/', (req, res) => {
