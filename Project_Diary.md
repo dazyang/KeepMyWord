@@ -63,4 +63,8 @@ Question here:
 **Two Options:**  
 1 Currently `getAllBooks` is returning a big data object which contains all the books in the database. Going with this function, what I need to do is to write a function that pick out(filter?/reduce?) the book id that matches with `/books/:id/vocbs`. 
 
-2 Anthoer way is to write a single book request `singleBookReq` function in `bookActions` to talk to the server to only return the particular book being loaded. This way the filter?/reduce? function happens in the back end. (this way may be more cumbersome?)
+2 Anthoer way is to write a single book request `singleBookReq` function in `bookActions` to talk to the server to only return the particular book being loaded. This way the filter?/reduce? function happens in the back end. (this way may be more cumbersome?)  
+
+:::::::  
+**Updated on 17 Feb 1839**  
+
