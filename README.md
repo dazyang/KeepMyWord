@@ -1,4 +1,4 @@
-# MyWords
+# KeepMyWords
 
 Keep My Words is a web app tool to aid langugage learning.   
 
