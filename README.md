@@ -1,6 +1,6 @@
 # MyWords
 
-This is a personal project I started during EDA Bootcamp. My goal is to create an app that allows me to create wordlists for me to keep track on newly acquired vocabularies and to review them.  
+Keep My Words is a web app tool to aid langugage learning.   
 
 ## Wishlist :star2:
 **First stage**
@@ -12,6 +12,3 @@ This is a personal project I started during EDA Bootcamp. My goal is to create a
 More to come
 
 ## Step by steps - resources to assist me achieving my goal :eyes:
-
-Knex && Testing
-https://github.com/miromiro-2017/knex-todo-cli
