@@ -66,5 +66,5 @@ Question here:
 2 Anthoer way is to write a single book request `singleBookReq` function in `bookActions` to talk to the server to only return the particular book being loaded. This way the filter?/reduce? function happens in the back end. (this way may be more cumbersome?)  
 
 :::::::  
-**Updated on 21 Feb 1839**  
+
 
