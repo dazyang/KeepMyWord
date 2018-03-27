@@ -1,6 +1,6 @@
 # KeepMyWords
 
-Keep My Words is a web app tool to aid langugage learning.   
+Keep My Words is an assistive tool to help langugage learning.   
 
 ## Wishlist :star2:
 **First stage**
