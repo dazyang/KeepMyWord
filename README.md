@@ -1,4 +1,4 @@
-# KeepMyWords
+# KeepMyWord
 
 Keep My Words is an assistive tool to help langugage learning.   
 
