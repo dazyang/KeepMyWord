@@ -7664,7 +7664,7 @@ var receiveWords = exports.receiveWords = function receiveWords(words) {
 };
 
 var receiveWordList = exports.receiveWordList = function receiveWordList(wordlist) {
-  console.log(wordlist); //currently returning []
+  console.log(wordlist);
   return {
     type: "RECEIVED_WORD_LIST",
     wordlist: wordlist
@@ -13888,31 +13888,24 @@ var AllBooks = function AllBooks(props) {
   return _react2.default.createElement(
     'div',
     { className: 'book-titles' },
-    _react2.default.createElement(
-      'span',
-      null,
-      book.book_title
-    ),
-    ' ',
+    book.book_title,
     '/',
-    ' ',
     _react2.default.createElement(
-      'span',
+      'p',
       { id: 'author' },
       book.author
     ),
-    ' ',
     _react2.default.createElement(
-      'span',
+      'p',
       { id: 'country' },
       book.country
     ),
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/books/' + props.book.id + '/vocabs' },
+      'div',
+      { id: 'checkout-vocab' },
       _react2.default.createElement(
-        'span',
-        { id: 'checkout-vocab' },
+        _reactRouterDom.Link,
+        { to: '/books/' + props.book.id + '/vocabs' },
         'See Vocabulary'
       )
     )
@@ -14159,7 +14152,7 @@ var Header = function Header() {
       _react2.default.createElement(
         'button',
         null,
-        'Booklists'
+        'Browse Books'
       )
     ),
     _react2.default.createElement(
@@ -14168,7 +14161,7 @@ var Header = function Header() {
       _react2.default.createElement(
         'button',
         null,
-        'Browse all vocabulary'
+        'Browse Vocabulary'
       )
     ),
     _react2.default.createElement(

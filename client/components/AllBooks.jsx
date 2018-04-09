@@ -7,10 +7,12 @@ const AllBooks = (props) => {
   
   return (
     <div className='book-titles'>
-      <span>{book.book_title}</span>{' '}/{' '}
-      <span id='author'>{book.author}</span>{' '}
-      <span id='country'>{book.country}</span>
-      <Link to={`/books/${props.book.id}/vocabs`}><span id='checkout-vocab'>See Vocabulary</span></Link>
+      {book.book_title}/
+      <p id='author'>{book.author}</p>
+      <p id='country'>{book.country}</p>
+      <div id='checkout-vocab'>
+        <Link to={`/books/${props.book.id}/vocabs`}>See Vocabulary</Link>
+      </div>  
     </div>
   )
 }

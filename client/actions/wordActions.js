@@ -8,7 +8,7 @@ export const receiveWords = (words) => {
 }
 
 export const receiveWordList = (wordlist) => {
-  console.log(wordlist)//currently returning []
+  console.log(wordlist)
   return {
     type: "RECEIVED_WORD_LIST",
     wordlist

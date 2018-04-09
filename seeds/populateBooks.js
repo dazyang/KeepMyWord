@@ -13,12 +13,6 @@ exports.seed = function(knex, Promise) {
         { id: 2, book_title: 'The Remain of Days', 
         author: 'Kazuo Ishiguro', 
         country:'England'
-        },
-        
-        { id: 3, 
-          book_title: 'Do They Speak English Down There?', 
-          author: 'Susan C Tunney', 
-          country:'America/New Zealand'
         }
       ]);
     });
